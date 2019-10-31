@@ -1,4 +1,4 @@
-package com.vaadin.example;
+package com.vaadin.Views;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.ClickEvent;
