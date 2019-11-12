@@ -1,4 +1,5 @@
-package es.uca.iw.wp.spring;
+package com.vaadin.Views;
+
 
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
