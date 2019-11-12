@@ -18,14 +18,9 @@ public class MainView extends AppLayout {
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         */
-        LoginForm component = new LoginForm();
         
-        //Añadimos el evento del click
-        component.addLoginListener(e ->{
-        	//boolean bIsAuthenticated = authenticate(e);
-        });
         
-        this.setContent(component);
+        this.setContent(new LoginView());
     }
     
     
