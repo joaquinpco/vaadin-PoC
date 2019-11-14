@@ -6,18 +6,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import Repository.UserRepository;
+
 @Service
 public class UserService implements UserDetailsService{
 
-	private PasswordEncoder _pwdEncoder;
+	private UserRepository _oUsrRepository;
+	private PasswordEncoder _oPwdEncoder;
 	
-	public UserService(PasswordEncoder pwdEncoder)
+	public UserService(PasswordEncoder oPwdEncoder, 
+			UserRepository oUsrRepository)
 	{
-		_pwdEncoder = pwdEncoder;
+		super();
+		_oPwdEncoder = oPwdEncoder;
+		_oUsrRepository = oUsrRepository;
 	}
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) 
+	public UserDetails loadUserByUsername(String sName) 
 			throws UsernameNotFoundException {
 		
 		return null;
