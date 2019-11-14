@@ -25,6 +25,7 @@ public class LoginView extends VerticalLayout {
     private Button _oBtnForgotUser;
     private Button _oBtnForgotPwd;
     private Button _oBtnSend;
+    private FormItem _oTxtUs;
     
     public LoginView() {
     	
@@ -35,17 +36,16 @@ public class LoginView extends VerticalLayout {
     	_oTxtUser = new TextField();
     	_oPwdPassword = new PasswordField();
     	
-    	FormItem _oTxtUs = _oFrmLogin.addFormItem(_oTxtUser, "Usuario");
+    	_oTxtUs = _oFrmLogin.addFormItem(_oTxtUser, "Usuario");
     	FormItem _oPwdpwd = _oFrmLogin.addFormItem(_oPwdPassword, "Contraseña");
     	HorizontalLayout actions = new HorizontalLayout(_oBtnSend);
     	VerticalLayout v = new VerticalLayout(_oTxtUs, _oPwdpwd);
-    	
+    	add(v);
     	Image oImgWhitePearlLogo = new Image("frontend/img/WPlogo.png", "WPlogo");
-    	oImgWhitePearlLogo.getStyle().set("width", "50%");
-    	oImgWhitePearlLogo.getStyle().set("height", "50%");
+    	oImgWhitePearlLogo.getStyle().set("width", "75%");
+    	oImgWhitePearlLogo.getStyle().set("height", "75%");
     	
     	HorizontalLayout logo = new HorizontalLayout(oImgWhitePearlLogo);
-    	_oFrmLogin.addFormItem(_oTxtUser, "Usuario");
     	
     	_oTxtUs.add(_oBtnForgotUser);
     	_oBtnForgotUser.getStyle().set("marginLeft", "10px");
