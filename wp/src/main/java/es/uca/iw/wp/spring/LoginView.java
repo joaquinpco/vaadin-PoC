@@ -4,7 +4,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-
+import com.vaadin.flow.router.Route;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.FormItem;
@@ -16,6 +16,8 @@ public class LoginView extends VerticalLayout {
 	 * 
 	 */
 	private static final long serialVersionUID = -7803619598952746302L;
+
+	public static final CharSequence ROUTE = "";
 	
 	private FormLayout _oFrmLogin;
 	private TextField _oTxtUser;
