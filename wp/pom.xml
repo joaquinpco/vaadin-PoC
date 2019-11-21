@@ -3,7 +3,7 @@
     <groupId>es.uca.iw.wp</groupId>
     <artifactId>wp</artifactId>
     <name>wp</name>
-    <version>2.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -129,7 +129,7 @@
         <dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-		    <version>5.1.46</version>
+		    <scope>runtime</scope>
 		</dependency>
     
     </dependencies>

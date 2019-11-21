@@ -8,8 +8,14 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 
 public class ScaleView extends VerticalLayout {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1820114367662698117L;
+	
 	private Button _btnCheck;
 	private DatePicker _dBegin, _dEnd;
+	
 	public ScaleView() {
 		_dBegin = new DatePicker();
 		_dBegin.setLabel("Fecha de llegada");

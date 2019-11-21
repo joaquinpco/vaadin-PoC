@@ -1,4 +1,4 @@
-package Entity;
+package es.uca.iw.wp.Entity;
 
 import java.util.Date;
 import java.util.List;

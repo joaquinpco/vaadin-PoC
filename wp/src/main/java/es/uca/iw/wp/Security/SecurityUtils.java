@@ -1,4 +1,4 @@
-package Security;
+package es.uca.iw.wp.Security;
 
 import com.vaadin.flow.server.ServletHelper.RequestType;
 import com.vaadin.flow.shared.ApplicationConstants;
