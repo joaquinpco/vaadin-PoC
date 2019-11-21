@@ -1,12 +1,19 @@
 package es.uca.iw.wp.Entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+@Entity
 public class Scale {
-	private int _iShipId, _iScaleId;
+	@GeneratedValue
+	@Id
+	private int _iScaleId;
+	private int _iShipId;
 	private boolean _bFirstCall;
 	private String _sPreviousPort, _sNextPort;
-	private LocalDateTime _dArrive, _dDeparture;
+	private Date _dArrive, _dDeparture;
 
 	public Scale() {}
 	
@@ -21,7 +28,7 @@ public class Scale {
 	 * @param dDeparture
 	 */
 	public Scale(int iShipId, int iScaleId, boolean bFirstCall, String sPreviousPort, String sNextPort,
-			LocalDateTime dArrive, LocalDateTime dDeparture) {
+			Date dArrive, Date dDeparture) {
 		_iShipId = iShipId;
 		_iScaleId = iScaleId;
 		_bFirstCall = bFirstCall;
@@ -40,15 +47,15 @@ public class Scale {
 	public void setShipId(int iShipId) { _iShipId = iShipId;}
 	public String getPreviousPort() {return _sPreviousPort;}
 	public String getNextPort() {return _sNextPort;}
-	public LocalDateTime getArrive() {return _dArrive;}
-	public LocalDateTime getDeparture() {return _dDeparture;}
+	public Date getArrive() {return _dArrive;}
+	public Date getDeparture() {return _dDeparture;}
 	
 	public void setScaleId(int iScaleId) { _iScaleId = iScaleId;}
 	public void setFirstCall(boolean bFirstCall) { _bFirstCall = bFirstCall;}
 	public void setPreviousPort(String sPreviousPort) { _sPreviousPort = sPreviousPort;}
 	public void setNextPort(String sNextPort) { _sNextPort = sNextPort;}
-	public void setArrive(LocalDateTime dArrive) { _dArrive = dArrive;}
-	public void setDeparture(LocalDateTime dDeparture) { _dDeparture = dDeparture;}
+	public void setArrive(Date dArrive) { _dArrive = dArrive;}
+	public void setDeparture(Date dDeparture) { _dDeparture = dDeparture;}
 	
 }
 	
