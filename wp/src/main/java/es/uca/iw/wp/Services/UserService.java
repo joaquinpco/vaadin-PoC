@@ -1,4 +1,4 @@
-package Services;
+package es.uca.iw.wp.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,7 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import Repository.UserRepository;
+import es.uca.iw.wp.Entity.User;
+import es.uca.iw.wp.Repository.UserRepository;
 
 @Service
 public class UserService implements UserDetailsService{
@@ -29,7 +30,13 @@ public class UserService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String sName) 
 			throws UsernameNotFoundException {
 		
-		return null;
+		User oUser = _oUsrRepository.findByName(sName);
+		
+		//Si no existe el usuario con ese nombre lo notificamos
+		if(oUser == null)
+			throw new UsernameNotFoundException(sName);
+		
+		return oUser;
 	}
 
 }

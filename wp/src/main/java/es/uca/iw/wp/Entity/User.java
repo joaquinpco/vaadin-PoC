@@ -1,12 +1,27 @@
-package Entity;
+package es.uca.iw.wp.Entity;
 
 import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
+@Entity
 public class User implements UserDetails
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5740932781665768714L;
+	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	private String _sName, _sLastName, _sPassword;
 	private int _iAccessCode;
 	
@@ -50,7 +65,7 @@ public class User implements UserDetails
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return null;
+		return _sName;
 	}
 
 	@Override
