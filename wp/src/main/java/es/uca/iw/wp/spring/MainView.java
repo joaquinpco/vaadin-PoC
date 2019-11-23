@@ -20,11 +20,6 @@ public class MainView extends AppLayout {
         img.setHeight("44px");
         addToNavbar(img);
         
-        setContent(new LoginView());
-        /*if(SecurityUtils.isUserLoggedIn())
-        	System.out.println("Logged");
-        else
-        	setContent(new LoginView());*/
     }
 
 }
