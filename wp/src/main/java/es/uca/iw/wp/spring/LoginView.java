@@ -27,7 +27,6 @@ import com.vaadin.flow.component.notification.Notification;
 
 @Tag("sa-login-View")
 @Route("login")
-@PageTitle("WhitePearl - login")
 public class LoginView extends VerticalLayout {
 	
 	/**
@@ -35,11 +34,10 @@ public class LoginView extends VerticalLayout {
 	 */
 	private static final long serialVersionUID = -7803619598952746302L;
 	
-	private AuthenticationManager _oAuth;
 	
 	public static final CharSequence ROUTE = "login";
-	
-    private AuthenticationProvider authenticationProvider;
+
+    private AuthenticationManager _oAuthenticationProvider;
 	
 	private FormLayout _oFrmLogin;
 	private TextField _oTxtUser;
@@ -81,31 +79,36 @@ public class LoginView extends VerticalLayout {
     	add(logo, v, actions);
     }
     
+    /**
+     * 
+     * @param oAuthenticationProvider Proveedor de autentication
+     */
     @Autowired
-    public LoginView() {
+    public LoginView(AuthenticationManager oAuthenticationProvider) {
     	
     	//UI Components initialization
     	initView();
     	
+    	_oAuthenticationProvider = oAuthenticationProvider;
     	
     	_oBtnSend.addClickListener(e -> 
     	{	
     		//Iniciar Sesíon
     		String sName = _oTxtUser.getValue();
     		String sPassWord = _oPwdPassword.getValue();
-    		
     		//Comprobamos el login de usuario
     		Authentication auth = new UsernamePasswordAuthenticationToken(sName,
                     sPassWord);
-    		try {
+    		try 
+    		{
     			
-             final Authentication authenticated = authenticationProvider.authenticate(auth);
+             final Authentication authenticated = _oAuthenticationProvider.authenticate(auth);
              SecurityContextHolder.getContext().setAuthentication(authenticated);
                 
             } 
     		catch (BadCredentialsException e1) 
     		{
-              Notification.show("Invalid credentials");
+              Notification.show("Invalid credentials:" + e1.getMessage());
             }
     		
     	});
