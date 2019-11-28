@@ -13,7 +13,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
 
-@Route("/verEscalas")
+@Route("verEscalas")
 public class ScaleView extends VerticalLayout {
 	private Button _btnCheck;
 	private DatePicker _dBegin, _dEnd;

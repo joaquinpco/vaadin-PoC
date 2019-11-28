@@ -4,6 +4,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -104,6 +105,8 @@ public class LoginView extends VerticalLayout {
     			
              final Authentication authenticated = _oAuthenticationProvider.authenticate(auth);
              SecurityContextHolder.getContext().setAuthentication(authenticated);
+             
+             getUI().ifPresent(ui -> ui.navigate(MainView.class));
                 
             } 
     		catch (BadCredentialsException e1) 
