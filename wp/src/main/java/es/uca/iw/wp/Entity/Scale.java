@@ -1,5 +1,7 @@
 package es.uca.iw.wp.Entity;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,52 +12,42 @@ public class Scale {
 	@GeneratedValue
 	@Id
 	private int _iScaleId;
-	private int _iShipId;
-	private boolean _bFirstCall;
-	private String _sPreviousPort, _sNextPort;
-	private Date _dArrive, _dDeparture;
+	private String _sPort;
+	private LocalTime _dTimeNow;
+	private LocalTime _dArrive;
+	private LocalTime _dDeparture;
 
 	public Scale() {}
 	
 	/**
 	 * 
-	 * @param iShipId
 	 * @param iScaleId
-	 * @param bFirstCall
-	 * @param sPreviousPort
-	 * @param sNextPort
-	 * @param dArrive
-	 * @param dDeparture
+	 * @param sPort: Nombre de la ciudad
+	 * @param dTimeNow: Horario ahora
+	 * @param dArrive: Horario de llegada
+	 * @param dDeparture: Horario de salida
 	 */
-	public Scale(int iShipId, int iScaleId, boolean bFirstCall, String sPreviousPort, String sNextPort,
-			Date dArrive, Date dDeparture) {
-		_iShipId = iShipId;
+	public Scale(int iScaleId, String sPort,
+			LocalTime dTimeNow, LocalTime dArrive, LocalTime dDeparture) {
 		_iScaleId = iScaleId;
-		_bFirstCall = bFirstCall;
-		_sPreviousPort = sPreviousPort;
-		_sNextPort = sNextPort;
+		_sPort = sPort;
 		_dArrive = dArrive;
 		_dDeparture = dDeparture;
+		_dTimeNow = dTimeNow;
 	}
 
 
 
-	public int getShipId() {return _iShipId;}
 	public int getScaleId() {return _iScaleId;}
-	
-	public boolean isFirstCall() {return _bFirstCall;}
-	public void setShipId(int iShipId) { _iShipId = iShipId;}
-	public String getPreviousPort() {return _sPreviousPort;}
-	public String getNextPort() {return _sNextPort;}
-	public Date getArrive() {return _dArrive;}
-	public Date getDeparture() {return _dDeparture;}
+	public String getPort() {return _sPort;}
+	public LocalTime getTimeNow() {return _dTimeNow;}
+	public LocalTime getArrive() {return _dArrive;}
+	public LocalTime getDeparture() {return _dDeparture;}
 	
 	public void setScaleId(int iScaleId) { _iScaleId = iScaleId;}
-	public void setFirstCall(boolean bFirstCall) { _bFirstCall = bFirstCall;}
-	public void setPreviousPort(String sPreviousPort) { _sPreviousPort = sPreviousPort;}
-	public void setNextPort(String sNextPort) { _sNextPort = sNextPort;}
-	public void setArrive(Date dArrive) { _dArrive = dArrive;}
-	public void setDeparture(Date dDeparture) { _dDeparture = dDeparture;}
-	
+	public void setPort(String sPort) { _sPort = sPort;}
+	public void setArrive(LocalTime dArrive) { _dArrive = dArrive;}
+	public void setDeparture(LocalTime dDeparture) { _dDeparture = dDeparture;}
+	public void setTimeNow(LocalTime dTimeNow) {_dTimeNow = dTimeNow;}
 }
 	
