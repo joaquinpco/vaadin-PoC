@@ -1,0 +1,21 @@
+.menu
+{
+    background: #74b9ff;
+    /*padding-top: 2%;
+    padding-bottom: 2%;*/
+}
+
+.content
+{
+    background: #81ecec;
+    
+}
+
+.leftsideboard
+{
+    background: #00cec9;
+}
+
+.main-view {
+    width: 100%;
+  }

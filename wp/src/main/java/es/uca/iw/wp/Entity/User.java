@@ -54,7 +54,7 @@ public class User implements UserDetails
 	public void setPassword(String sPassword) { _sPassword = sPassword; }
 	
 	@Override
-	public String toString() { return "" + getAccessCode(); }
+	public String toString() { return "" + getName() + " " + getLastName(); }
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
