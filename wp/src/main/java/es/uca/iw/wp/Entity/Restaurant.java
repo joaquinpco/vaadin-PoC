@@ -23,13 +23,13 @@ public class Restaurant {
 	private List<Food> _lstFood = new ArrayList<Food>();
 	
 	public String getName() { return _sName;}
-	public void setName(String name) {_sName = name;}
+	public void setName(String sName) {_sName = sName;}
 	public Date getOpen() {return _dtOpen;}
-	public void setOpen(Date timeOpen) {_dtOpen = timeOpen;}
+	public void setOpen(Date dtTimeOpen) {_dtOpen = dtTimeOpen;}
 	public Date getClose() {return _dtClose;}
-	public void setClose(Date timeClose) {_dtClose = timeClose;}
-	public void addFood(Food plate) { _lstFood.add(plate);}
-	public void addFood(String name, float price) { Food plate = new Food(name , price); _lstFood.add(plate);}
+	public void setClose(Date dtTimeClose) {_dtClose = dtTimeClose;}
+	public void addFood(Food oPlate) { _lstFood.add(oPlate);}
+	public void addFood(String sName, float fPrice) { Food oPlate = new Food(sName , fPrice); _lstFood.add(oPlate);}
 	/*
 	public String getNameFood(int i) { return _lstFood.;}
 	public void setNameFood(int i, String name) {_lstFood.get(i).setName(name);}

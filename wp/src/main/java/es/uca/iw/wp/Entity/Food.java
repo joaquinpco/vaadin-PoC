@@ -27,7 +27,7 @@ public class Food
 	}
 	
 	public String getName() { return _sName;}
-	public void setName(String name) {_sName = name;}
+	public void setName(String sName) {_sName = sName;}
 	public float getPrice() {return _fPrice;}
-	public void setPrice(float price) {_fPrice = price;}
+	public void setPrice(float fPrice) {_fPrice = fPrice;}
 }
