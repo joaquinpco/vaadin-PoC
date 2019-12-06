@@ -1,10 +1,9 @@
 package es.uca.iw.wp.spring;
 
 import com.vaadin.flow.component.applayout.AppLayout;
+
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.router.Route;
-
-import es.uca.iw.wp.Security.SecurityUtils;
 
 @Route("")
 public class MainView extends AppLayout {

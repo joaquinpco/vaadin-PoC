@@ -2,6 +2,9 @@ package es.uca.iw.wp.Security;
 
 import com.vaadin.flow.server.ServletHelper.RequestType;
 import com.vaadin.flow.shared.ApplicationConstants;
+
+import es.uca.iw.wp.Entity.User;
+
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -46,9 +49,16 @@ public final class SecurityUtils {
 	 */
 	public static boolean isUserLoggedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
 		return authentication != null
 				&& !(authentication instanceof AnonymousAuthenticationToken)
 				&& authentication.isAuthenticated();
+	}
+	
+	public static User getSesionUser()
+	{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return (User)authentication.getPrincipal();
 	}
 
 	/**
