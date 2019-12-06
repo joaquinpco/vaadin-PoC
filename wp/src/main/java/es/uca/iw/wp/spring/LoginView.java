@@ -106,8 +106,11 @@ public class LoginView extends VerticalLayout {
              final Authentication authenticated = _oAuthenticationProvider.authenticate(auth);
              SecurityContextHolder.getContext().setAuthentication(authenticated);
              
+             
              getUI().ifPresent(ui -> ui.navigate(MainView.class));
-                
+             
+             //getUI().get().getPage().reload();
+             
             } 
     		catch (BadCredentialsException e1) 
     		{
