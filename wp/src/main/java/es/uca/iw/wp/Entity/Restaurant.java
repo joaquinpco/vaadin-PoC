@@ -17,6 +17,7 @@ public class Restaurant {
 	
 	private String _sName;
 	private Date _dtOpen, _dtClose;
+	private int iNumerOfTables;
 	
 	//private List of food many to many
 	@OneToMany

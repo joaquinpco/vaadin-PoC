@@ -14,13 +14,13 @@ public class Table
 	private int _iNumber;
 	private Long _lUserId;
 	
-	public Food() {}
+	public Table() {}
 	/**
 	 * 
 	 * @param sNumber
 	 * @param lUserId
 	 */
-	public Food(int iNumber, Long lUserId)
+	public Table(int iNumber, Long lUserId)
 	{
 		_iNumber = iNumber;
 		setUserId(lUserId);

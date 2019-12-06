@@ -37,12 +37,9 @@ public class RestaurantView extends VerticalLayout {
 	public RestaurantView()
 	{
 		//Intialize UI/UX
-		initUIView();
-		
-		
+		initUIView();	
 	}
 	/*
-	newRestaurant.add(//nombre del restaurante al añadirlo
-		
+	newRestaurant.add(//nombre del restaurante al añadirlo	
 	);*/
 }
