@@ -23,7 +23,7 @@ import es.uca.iw.wp.Repository.ScaleRepository;
 import es.uca.iw.wp.Services.ScaleService;
 
 
-@Route("verEscalas")
+@Route("showScales")
 public class ScaleView extends VerticalLayout {
 	@Autowired
 	private ScaleService _oScService;
