@@ -11,5 +11,6 @@ import es.uca.iw.wp.Entity.Scale;
 
 public interface ScaleRepository extends JpaRepository<Scale, Integer>{
 	Scale findById(int _iScaleId);
+	
 	List<Scale> findAllBy_dTimeNowBetween(LocalDate begin, LocalDate end);
 }
