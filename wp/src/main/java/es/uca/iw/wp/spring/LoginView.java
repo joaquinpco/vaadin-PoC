@@ -19,6 +19,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -91,7 +92,7 @@ public class LoginView extends VerticalLayout {
     	initView();
     	
     	_oAuthenticationProvider = oAuthenticationProvider;
-    	
+    	_oBtnSend.addClickShortcut(Key.ENTER);
     	_oBtnSend.addClickListener(e -> 
     	{	
     		//Iniciar Sesíon
