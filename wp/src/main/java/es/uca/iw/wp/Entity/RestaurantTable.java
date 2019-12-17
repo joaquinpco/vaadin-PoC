@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Table
+public class RestaurantTable
 {
 	@Id
 	@GeneratedValue
@@ -14,13 +14,13 @@ public class Table
 	private int _iNumber;
 	private Long _lUserId;
 	
-	public Table() {}
+	public RestaurantTable() {}
 	/**
 	 * 
 	 * @param sNumber
 	 * @param lUserId
 	 */
-	public Table(int iNumber, Long lUserId)
+	public RestaurantTable(int iNumber, Long lUserId)
 	{
 		_iNumber = iNumber;
 		setUserId(lUserId);
