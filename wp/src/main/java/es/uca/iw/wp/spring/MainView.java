@@ -59,16 +59,13 @@ public class MainView extends VerticalLayout {
 		   _oVrtlContent.addClassName("content");
 		   _oVrtlNavBar.addClassName("leftsideboard");
 		   
+		   _oVrtlContent.add(new ScaleView());
+		   
 		   
 	}
 		
 	
 	public MainView() {
-		
-		/*Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
-        img.setHeight("44px");
-        addToNavbar(img);
-        */
 		
 		initView();
 		
