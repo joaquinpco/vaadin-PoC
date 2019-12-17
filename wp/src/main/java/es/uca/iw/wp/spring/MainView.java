@@ -3,12 +3,9 @@ package es.uca.iw.wp.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.applayout.AppLayout;
-import com.vaadin.flow.component.dependency.StyleSheet;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 import es.uca.iw.wp.Security.SecurityUtils;
@@ -29,8 +26,13 @@ public class MainView extends AppLayout {
 		this.restaurantService=restaurantService;
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
         img.setHeight("44px");
+        Button btnLogOut = new Button("log Out");
+        
         addToNavbar(img);
-        addToNavbar(new H1("Bienvenid@ " + SecurityUtils.getSesionUser()));
+        addToNavbar(new H3("Bienvenid@ " + SecurityUtils.getSesionUser()));
+        
+        
+        addToNavbar(btnLogOut);
         
         setContent(new RestaurantView(restaurantService));
 		
