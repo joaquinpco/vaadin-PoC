@@ -17,7 +17,7 @@ public class Restaurant {
 	
 	private String _sName;
 	private Date _dtOpen, _dtClose;
-	private int iNumerOfTables;
+	private int _iNumerOfTables;
 	
 	//private List of food many to many
 	@OneToMany
@@ -29,6 +29,8 @@ public class Restaurant {
 	public void setOpen(Date dtTimeOpen) {_dtOpen = dtTimeOpen;}
 	public Date getClose() {return _dtClose;}
 	public void setClose(Date dtTimeClose) {_dtClose = dtTimeClose;}
+	public int getTable() {return _iNumerOfTables;}
+	public void setTable(int iNumTables) {_iNumerOfTables = iNumTables;}
 	public void addFood(Food oPlate) { _lstFood.add(oPlate);}
 	public void addFood(String sName, float fPrice) { Food oPlate = new Food(sName , fPrice); _lstFood.add(oPlate);}
 	/*
