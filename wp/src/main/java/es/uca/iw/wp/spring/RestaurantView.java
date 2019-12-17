@@ -1,6 +1,7 @@
 package es.uca.iw.wp.spring;
 
 import com.vaadin.flow.component.accordion.*;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
@@ -37,17 +38,7 @@ public class RestaurantView extends VerticalLayout {
 	
 	private void initUIView()
 	{
-		//Vertical Layout
-		_oVrtlNewRestaurant = new VerticalLayout();
-		_oVrtlMenu = new VerticalLayout();
-		_oVrtlHorario = new VerticalLayout();
-		_oVrtltables = new VerticalLayout();
-		//Accordions
 		_oAcrdnList = new Accordion();
-	    _oAcrdnRestaurants = new Accordion();
-	    
-	  /*Se lo carga todo
-	  		auxiliarVL.removeAll();*/
 	}
 	
 	public RestaurantView(RestaurantService _oRs )
@@ -66,20 +57,29 @@ public class RestaurantView extends VerticalLayout {
 		{
 			Restaurant oRestaurant = oIter.next();
 			
+			_oVrtlMenu = new VerticalLayout();
+			_oVrtlHorario = new VerticalLayout();
+			_oVrtltables = new VerticalLayout();
+			_oVrtlNewRestaurant = new VerticalLayout();
+			//Accordions
+			
+		    _oAcrdnRestaurants = new Accordion();
+			
 			_oVrtlHorario.add(
-					new TextField("Hora de apertura: "+ oRestaurant.getOpen()),
-					new TextField("Hora de cierre: "+ oRestaurant.getClose())
+					new Span("Hora de apertura: "+ oRestaurant.getOpen().toString()),
+					new Span("Hora de cierre: "+ oRestaurant.getClose().toString())
 			);
 			_oAcrdnRestaurants.add("Horario", _oVrtlHorario);
 			
 			_oVrtltables.add(
-					new TextField("Numero de mesas: "+ oRestaurant.getTable())
+					new Span("Numero de mesas: "+ oRestaurant.getTable())
 			);
-			_oAcrdnRestaurants.add("Mesas", _oVrtlHorario);
+			
+			_oAcrdnRestaurants.add("Mesas", _oVrtltables);
 			
 			//while(//mas elementos de la bbdd para comidas enlazadas a restaurant) {
 			_oVrtlMenu.add(
-						new TextField("Nombre Plato, Precio Plato €")//sustituir por el nombre del plato de la bbdd
+						new Span("Nombre Plato, Precio Plato €")//sustituir por el nombre del plato de la bbdd
 				);
 			//}
 			_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
@@ -88,7 +88,7 @@ public class RestaurantView extends VerticalLayout {
 			_oAcrdnList.add(oRestaurant.getName(), _oVrtlNewRestaurant);
 		}
 		
-		
+		add(_oAcrdnList);
 	}
 	/*
 	newRestaurant.add(//nombre del restaurante al añadirlo	
