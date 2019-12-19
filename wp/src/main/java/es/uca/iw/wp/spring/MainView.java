@@ -1,6 +1,7 @@
 package es.uca.iw.wp.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
@@ -33,6 +34,11 @@ public class MainView extends AppLayout {
         
         
         addToNavbar(btnLogOut);
+        
+        btnLogOut.addClickListener(e->{
+        	SecurityContextHolder.clearContext();
+        	getUI().get().getPage().reload();
+        });
         
         setContent(new RestaurantView(restaurantService));
 		
