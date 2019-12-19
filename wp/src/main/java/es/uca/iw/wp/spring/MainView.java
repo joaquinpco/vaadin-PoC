@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.vaadin.flow.component.applayout.AppLayout;
+import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Route;
 
 import es.uca.iw.wp.Security.SecurityUtils;
@@ -30,6 +33,16 @@ public class MainView extends AppLayout {
         Button btnLogOut = new Button("log Out");
         
         addToNavbar(img);
+        
+        final boolean touchOptimized = true;
+        addToNavbar(touchOptimized, new DrawerToggle(), img);
+        Tabs tabs = new Tabs(new Tab("Home"), new Tab("Scale"), 
+        		new Tab("Book"), new Tab("Profile"));
+        tabs.setOrientation(Tabs.Orientation.VERTICAL);
+        
+        addToDrawer(tabs);
+        
+        
         addToNavbar(new H3("Bienvenid@ " + SecurityUtils.getSesionUser()));
         
         
@@ -40,8 +53,8 @@ public class MainView extends AppLayout {
         	getUI().get().getPage().reload();
         });
         
+        
         setContent(new RestaurantView(restaurantService));
-		
     }
 
 }
