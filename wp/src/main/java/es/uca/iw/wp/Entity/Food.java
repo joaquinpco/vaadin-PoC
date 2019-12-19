@@ -14,6 +14,7 @@ public class Food
 	private String _sName;
 	private float _fPrice;
 	
+	
 	public Food() {}
 	/**
 	 * 
@@ -30,4 +31,5 @@ public class Food
 	public void setName(String sName) {_sName = sName;}
 	public float getPrice() {return _fPrice;}
 	public void setPrice(float fPrice) {_fPrice = fPrice;}
+	
 }

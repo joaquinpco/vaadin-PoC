@@ -12,7 +12,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import es.uca.iw.wp.Entity.Food;
 import es.uca.iw.wp.Entity.Restaurant;
+import es.uca.iw.wp.Services.FoodService;
 import es.uca.iw.wp.Services.RestaurantService;
 
 @Route("showRestaurants")
@@ -44,7 +46,7 @@ public class RestaurantView extends VerticalLayout {
 		_oAcrdnList = new Accordion();
 	}
 	
-	public RestaurantView(RestaurantService _oRs )
+	public RestaurantView(RestaurantService _oRs)
 	{
 		this._oRs=_oRs;
 		
@@ -55,6 +57,8 @@ public class RestaurantView extends VerticalLayout {
 		List<Restaurant> oLst = _oRs.listRestaurant();
 		
 		Iterator<Restaurant> oIter = oLst.iterator();
+		
+
 		
 		while(oIter.hasNext())
 		{
@@ -80,16 +84,21 @@ public class RestaurantView extends VerticalLayout {
 			
 			_oAcrdnRestaurants.add("Mesas", _oVrtltables);
 			
-			//while(//mas elementos de la bbdd para comidas enlazadas a restaurant) {
-			_oVrtlMenu.add(
-						new Span("Nombre Plato, Precio Plato €")//sustituir por el nombre del plato de la bbdd
-				);
-			//}
-			_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
+			List<Food> oLstFood = oRestaurant.getFoods();
+			Iterator<Food> oItrFood = oLstFood.iterator();
 			
-			_oVrtlNewRestaurant.add(_oAcrdnRestaurants);
-			_oAcrdnList.add(oRestaurant.getName(), _oVrtlNewRestaurant);
-		}
+			while(oItrFood.hasNext()) {
+			
+				Food oFood = oItrFood.next();
+				_oVrtlMenu.add(
+							new Span(oFood.getName() +"\t"+ oFood.getPrice()+"€")//sustituir por el nombre del plato de la bbdd
+					);
+				}
+				_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
+				
+				_oVrtlNewRestaurant.add(_oAcrdnRestaurants);
+				_oAcrdnList.add(oRestaurant.getName(), _oVrtlNewRestaurant);
+		 	}
 		
 		add(_oAcrdnList);
 	}
