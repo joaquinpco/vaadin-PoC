@@ -6,6 +6,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class RestaurantView extends VerticalLayout {
 	private VerticalLayout _oVrtltables;
 	private VerticalLayout _oVrtlMenu;
 	private VerticalLayout _oVrtlNewRestaurant;
+	
+	private SimpleDateFormat _oSf = new SimpleDateFormat("kk:mm");
 
 	//services
 	
@@ -66,8 +69,8 @@ public class RestaurantView extends VerticalLayout {
 		    _oAcrdnRestaurants = new Accordion();
 			
 			_oVrtlHorario.add(
-					new Span("Hora de apertura: "+ oRestaurant.getOpen().toString()),
-					new Span("Hora de cierre: "+ oRestaurant.getClose().toString())
+					new Span("Hora de apertura: "+ _oSf.format(oRestaurant.getOpen())),
+					new Span("Hora de cierre: "+ _oSf.format(oRestaurant.getClose()))
 			);
 			_oAcrdnRestaurants.add("Horario", _oVrtlHorario);
 			
