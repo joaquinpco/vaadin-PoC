@@ -31,7 +31,7 @@ public class MainView extends AppLayout {
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
         img.setHeight("44px");
         Button btnLogOut = new Button("log Out");
-        
+        btnLogOut.getStyle().set("margin-left", "60%");
         addToNavbar(img);
         
         final boolean touchOptimized = true;
@@ -54,7 +54,9 @@ public class MainView extends AppLayout {
         });
         
         
-        setContent(new RestaurantView(restaurantService));
+        
+        //swichtabs.getElement().getText())
+       
     }
 
 }
