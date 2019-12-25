@@ -1,7 +1,6 @@
 package es.uca.iw.wp.Services;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import es.uca.iw.wp.Repository.RestaurantRepository;
 @Service
 public class RestaurantService{
 		private static RestaurantRepository _oScRepository;
-		private static RestaurantService _oRSrvc;
+		private static RestaurantService _oRstService;
 		
 		@Autowired
 		private RestaurantService(RestaurantRepository oScRepository) {
