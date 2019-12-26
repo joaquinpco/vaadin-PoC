@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -24,6 +25,9 @@ public class Restaurant {
 	//private List of food many to many
 	@OneToMany(fetch=FetchType.EAGER)
 	private List<Food> _lstFood = new ArrayList<Food>();
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Book _oBook;
 	
 	public List<Food> getFoods(){ return _lstFood; }
 	public String getName() { return _sName;}
