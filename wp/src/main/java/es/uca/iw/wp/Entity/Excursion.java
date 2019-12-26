@@ -3,6 +3,7 @@ package es.uca.iw.wp.Entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Excursion {
@@ -16,6 +17,9 @@ public class Excursion {
 	private double _dPrice;
 	private int _iDuracion;
 	private double _dCancelationPay;
+	
+	@ManyToOne
+	private Book _oBook;
 	
 	public Excursion(int iCityId, String strExcursionName, String strDescripcion, double dPrice, int iDuracion, double dCancelationPay) {
 		setCityId(_iCityId);
