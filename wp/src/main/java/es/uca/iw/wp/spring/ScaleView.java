@@ -25,12 +25,14 @@ import es.uca.iw.wp.Services.ScaleService;
 @Route("showScales")
 
 public class ScaleView extends VerticalLayout {
+	
 	@Autowired
 	private ScaleService _oScService;
 	
 	private Button _btnCheck;
 	private Button _btnGoToCity;
 	private DatePicker _dBegin, _dEnd;
+	
 	public ScaleView(ScaleService _oScService) {
 		this._oScService = _oScService;
 		Scale s = _oScService.findById(0);
