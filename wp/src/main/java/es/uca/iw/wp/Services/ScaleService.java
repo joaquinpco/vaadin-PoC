@@ -2,6 +2,7 @@ package es.uca.iw.wp.Services;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,16 @@ public class ScaleService{
 		 * @param entry
 		 * @return
 		 */
-		public Scale save(Scale entry) {
-			return _oScRepository.save(entry);
-		}
-		
 		public Scale findById(int id) {
-			return _oScRepository.findById(id);
+			return _oScRepository.findByIds(id);
 		}
 		
-		public List<Scale> findAllByScaleTimeBetween(LocalDate begin, LocalDate end){
-			return _oScRepository.findAllBy_dTimeNowBetween(begin, end);
+		/*public List<Scale> findAllByScaleTimeBetween(LocalDate dArrive, LocalDate dDeparture){
+			return _oScRepository.findAllBy_dTimeNow(dArrive, dDeparture);
+		}
+		*/
+		public Scale findBy_dTimeNow(LocalDate now) {
+			return _oScRepository.findBy_dTimeNow(now);
 		}
 	
 }
