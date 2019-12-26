@@ -109,6 +109,7 @@ public class LoginView extends VerticalLayout {
              
              
              getUI().ifPresent(ui -> ui.navigate(MainView.class));
+             getUI().get().getSession().getAttribute("");
              
              //getUI().get().getPage().reload();
              
