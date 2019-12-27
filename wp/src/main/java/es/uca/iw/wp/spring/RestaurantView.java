@@ -1,6 +1,7 @@
 package es.uca.iw.wp.spring;
 
 import com.vaadin.flow.component.accordion.*;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -95,6 +96,10 @@ public class RestaurantView extends VerticalLayout {
 					);
 				}
 				_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
+				Anchor reserva = new Anchor("http://127.0.0.1:8080/showRestaurants?id_type=1&&id_booking="+oRestaurant.getId()+"", "Reserva");
+				_oAcrdnRestaurants.add("reservar", reserva);
+				
+				
 				
 				_oVrtlNewRestaurant.add(_oAcrdnRestaurants);
 				_oAcrdnList.add(oRestaurant.getName(), _oVrtlNewRestaurant);
