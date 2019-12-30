@@ -37,6 +37,7 @@ public class Restaurant {
 	public Date getClose() {return _dtClose;}
 	public void setClose(Date dtTimeClose) {_dtClose = dtTimeClose;}
 	public int getTable() {return _iNumerOfTables;}
+	public Long getId() {return id;}
 	public void setTable(int iNumTables) {_iNumerOfTables = iNumTables;}
 	public void addFood(Food oPlate) { _lstFood.add(oPlate);}
 	public void addFood(Long lIdRestaurant, String sName, float fPrice) { Food oPlate = new Food(sName , fPrice); _lstFood.add(oPlate);}
