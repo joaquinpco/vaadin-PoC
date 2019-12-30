@@ -18,19 +18,16 @@ public class ScaleService{
 		public ScaleService(ScaleRepository oScRepository) {
 			_oScRepository = oScRepository;
 		}
+		
 		/**
 		 * Método que solo se podrá usar con el admin
 		 * @param entry
 		 * @return
 		 */
-		public Scale findById(int id) {
-			return _oScRepository.findByIds(id);
-		}
+		public Scale findById(int id) { return _oScRepository.findByIds(id); }
 		
-		/*public List<Scale> findAllByScaleTimeBetween(LocalDate dArrive, LocalDate dDeparture){
-			return _oScRepository.findAllBy_dTimeNow(dArrive, dDeparture);
-		}
-		*/
+		public long numberOfScales() { return _oScRepository.count(); }
+		
 		public Scale findBy_dTimeNow(LocalDate now) {
 			return _oScRepository.findBy_dTimeNow(now);
 		}
