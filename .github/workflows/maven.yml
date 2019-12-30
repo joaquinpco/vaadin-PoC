@@ -14,5 +14,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn -B package --file wp/pom.xml 
-           mvn deploy -Dregistry=https://maven.pkg.github.com/joaquinpco -Dtoken=GH_TOKEN
+      run: mvn -B package --file wp/pom.xml
