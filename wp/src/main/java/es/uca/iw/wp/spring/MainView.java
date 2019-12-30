@@ -68,6 +68,9 @@ public class MainView extends AppLayout {
             	case "Profile":
             		setContent(new UserView());
             		break;
+            	case "Book":
+            		setContent(new BookingView());
+            		break;
             }
         });
         
