@@ -22,6 +22,9 @@ public class RestaurantService{
 		public Restaurant findById(int id) {
 			return _oScRepository.findByIds(id);
 		}
+		public Restaurant findByName(String name) {
+			return _oScRepository.findByNames(name);
+		}
 		public List<Restaurant> listRestaurant(){
 			return _oScRepository.findAll();
 		}
