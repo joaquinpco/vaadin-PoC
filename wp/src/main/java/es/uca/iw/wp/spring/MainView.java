@@ -44,8 +44,14 @@ public class MainView extends AppLayout {
         final boolean touchOptimized = true;
         addToNavbar(touchOptimized, new DrawerToggle(), img);
         
+        Tabs subTabs = new Tabs(new Tab("Restaurants"), new Tab("Excursions"));
+        subTabs.setOrientation(Tabs.Orientation.VERTICAL);
+        Tab book = new Tab("Book");
+        book.add(subTabs);
+        
+        
         Tabs tabs = new Tabs(new Tab("Home"), new Tab("Scale"), 
-        		new Tab("Book"), new Tab("Profile"));
+        		book, new Tab("Profile"));
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(tabs);
         
@@ -68,10 +74,12 @@ public class MainView extends AppLayout {
             	case "Profile":
             		setContent(new UserView());
             		break;
-            	case "Book":
-            		setContent(new BookingView());
-            		break;
             }
+        });
+        
+        subTabs.addSelectedChangeListener(e->{
+        	setContent(new BookingView(e.getSelectedTab().
+        			getElement().getText()));
         });
         
         //Set view for each tab item

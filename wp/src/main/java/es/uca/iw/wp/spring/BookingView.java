@@ -14,17 +14,19 @@ public class BookingView extends VerticalLayout{
 	 */
 	private static final long serialVersionUID = 7000936254875598952L;
 	
+	private String _sBookType;
+	
 	private FormLayout _oLytWithFormItems = new FormLayout();
 	private ComboBox<String> _oLblBookingName = new ComboBox<>();
 	private TextField _oTxtLastName = new TextField();
 	private DatePicker _oDatePicker = new DatePicker();
 	private Button _oBtnBook = new Button("Book");
 	
-	private void initializeView()
+	private void initializeView(String sBookType)
 	{
 		
 		_oLblBookingName.setItems("Restaurant", "Excursion");
-		_oLblBookingName.setLabel("Booking Name");
+		_oLblBookingName.setLabel("Booking " + sBookType);
 		_oLblBookingName.setValue("Restaurant");
 		_oLytWithFormItems.add(_oLblBookingName);
 		
@@ -33,9 +35,10 @@ public class BookingView extends VerticalLayout{
 		add(_oLytWithFormItems, _oBtnBook);
 	}
 	
-	public BookingView()
+	public BookingView(String sBookType)
 	{
-		initializeView();
+		_sBookType = sBookType;
+		initializeView(_sBookType);
 	}
 	
 }
