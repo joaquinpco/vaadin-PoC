@@ -29,6 +29,12 @@ public class Restaurant {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Book _oBook;
 	
+	public Restaurant(String name, Date open, Date close, int tables){
+		_sName=name;
+		_dtOpen=open;
+		_dtClose=close;
+		_iNumerOfTables=tables;
+	}
 	public List<Food> getFoods(){ return _lstFood; }
 	public String getName() { return _sName;}
 	public void setName(String sName) {_sName = sName;}
