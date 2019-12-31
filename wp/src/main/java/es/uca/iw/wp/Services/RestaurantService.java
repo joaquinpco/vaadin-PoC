@@ -10,8 +10,8 @@ import es.uca.iw.wp.Entity.Restaurant;
 import es.uca.iw.wp.Repository.RestaurantRepository;
 @Service
 public class RestaurantService{
+	
 		private static RestaurantRepository _oScRepository;
-		private static RestaurantService _oRstService;
 		
 		@Autowired
 		private RestaurantService(RestaurantRepository oScRepository) {
@@ -23,7 +23,7 @@ public class RestaurantService{
 			return _oScRepository.findByIds(id);
 		}
 		public Restaurant findByName(String name) {
-			return _oScRepository.findByNames(name);
+			return _oScRepository.findByName(name);
 		}
 		public List<Restaurant> listRestaurant(){
 			return _oScRepository.findAll();

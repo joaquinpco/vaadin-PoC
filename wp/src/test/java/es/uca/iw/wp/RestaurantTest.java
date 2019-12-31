@@ -1,6 +1,8 @@
 package es.uca.iw.wp;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.assertj.core.api.Assertions;
@@ -27,23 +29,40 @@ public class RestaurantTest
 	@Test
 	public void testSaveAndFindResturant()
 	{
-		String sNombre = "";
-		//Test
-		@SuppressWarnings("deprecation")
-		Date dateO = new Date("2019-12-19 09:00:00");
-		@SuppressWarnings("deprecation")
-		Date dateC = new Date("2019-12-19 09:00:00");
 		
-		Restaurant testRestaurant = new Restaurant("WacDonald", dateO,dateC, 23);
+		//Test
+
+		Date date = new Date();
+		SimpleDateFormat smpDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			date = smpDateFormat.parse("2019-12-19 09:00:00");
+		} catch (ParseException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		Date dateA = new Date(); 
+		SimpleDateFormat smpDateFormatCheck = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			dateA = smpDateFormatCheck.parse("2019-12-19 09:00:00");
+		}
+		catch(ParseException e)
+		{
+			e.printStackTrace();
+		}
+		
+		Restaurant testRestaurant = new Restaurant("WacDonald", date, dateA, 23);
 		
 		//Almacenamos el usuario
 		oRestaurantRepository.save(testRestaurant);
 		
+		long iRestaurants = oRestaurantRepository.count();
 		
-		Restaurant oFoundRestaurant = oRestaurantRepository.findByNames("WacDonald");
-		sNombre = oFoundRestaurant.getName();
-		
-		Assertions.assertThat(sNombre).isEqualTo("WacDonald");
+		if(iRestaurants > 0)
+	    {
+			Restaurant oFoundRestaurant = oRestaurantRepository.findByName("WacDonald");
+			Assertions.assertThat(oFoundRestaurant.getName()).isEqualTo("WacDonald");
+	    }
 		
 	}
 }
