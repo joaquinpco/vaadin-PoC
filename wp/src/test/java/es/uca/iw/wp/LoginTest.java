@@ -1,8 +1,6 @@
 package es.uca.iw.wp;
 
 
-import static org.junit.Assert.assertThat;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
