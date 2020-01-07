@@ -19,13 +19,11 @@ public class RestaurantService{
 		}
 		
 		
-		public Restaurant findById(int id) {
-			return _oScRepository.findByIds(id);
-		}
-		public Restaurant findByName(String name) {
-			return _oScRepository.findByName(name);
-		}
-		public List<Restaurant> listRestaurant(){
-			return _oScRepository.findAll();
-		}
+		public Restaurant findById(int id) { return _oScRepository.findByIds(id); }
+		
+		public Restaurant findByName(String name) { return _oScRepository.findByName(name); }
+		
+		public List<Restaurant> listRestaurant(){ return _oScRepository.findAll(); }
+		
+		public Long count() { return _oScRepository.count(); }
 }

@@ -15,7 +15,8 @@ public class CityService {
 		_oCityRepository = oCityRepository;
 	}
 	
-	public City findById(int id) {
-		return _oCityRepository.findByIds(id);
-	}
+	public City findById(int id) { return _oCityRepository.findByIds(id); }
+	
+	public long count() { return _oCityRepository.count(); }
+	
 }
