@@ -78,8 +78,14 @@ public class MainView extends AppLayout {
         });
         
         subTabs.addSelectedChangeListener(e->{
-        	setContent(new BookingView(e.getSelectedTab().
-        			getElement().getText()));
+        	switch(e.getSelectedTab().
+        			getElement().getText())
+        	{
+	        	case "Restaurants":
+		        	setContent(new BookingView(e.getSelectedTab().
+		        			getElement().getText(), _oRestaurantService));
+		        break;
+        	}
         });
         
         //Set view for each tab item
