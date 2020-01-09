@@ -17,6 +17,7 @@ public class City {
 	
 	private String _sName;
 	private String _sDescrip;
+
 	private double _dLon;
 	private double _dLat;
 	public String _sImagePath;

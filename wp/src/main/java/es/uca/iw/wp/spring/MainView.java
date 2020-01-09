@@ -68,6 +68,10 @@ public class MainView extends AppLayout {
         	
         	switch(e.getSelectedTab().getElement().getText())
             {
+        		case "Home":
+        		
+        		break;
+        	
             	case "Scale":
             		setContent(new ScaleView(_oScaleService));
             		break;

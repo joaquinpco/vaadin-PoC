@@ -1,7 +1,9 @@
 package es.uca.iw.wp.spring;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 
@@ -102,6 +104,23 @@ public class BookingView extends VerticalLayout{
 			//Obtenemos los resultados para almacenar
 			LocalDate oLclDate = _oDatePicker.getValue();
 			LocalTime oLclTime = _oTimePicker.getValue();
+			
+			//Get Specific data 
+			int iYear = oLclDate.getYear();
+			int iMonth = oLclDate.getMonthValue();
+			int iDay = oLclDate.getDayOfMonth();
+			
+			int iHour = oLclTime.getHour();
+			
+			SimpleDateFormat smpDateFormatCheck = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			String sDate = iYear + "-" + iMonth + "-" + iDay + " " + iHour + ":00:00";
+			try 
+			{
+				Date dReserva = smpDateFormatCheck.parse(sDate);
+				
+			}
+			catch(Exception ex) {}
 			
 		});
 	}
