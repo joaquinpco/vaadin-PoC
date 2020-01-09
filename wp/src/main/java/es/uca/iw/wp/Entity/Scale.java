@@ -1,21 +1,30 @@
 package es.uca.iw.wp.Entity;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 @Entity
 public class Scale {
 	@GeneratedValue
 	@Id
 	private int _iScaleId;
 	private String _sPort;
-	private LocalTime _dTimeNow;
-	private LocalTime _dArrive;
-	private LocalTime _dDeparture;
+	//@Temporal(TemporalType.TIMESTAMP)
+	private LocalDate _dArrive;
+	//@Temporal(TemporalType.TIMESTAMP)
+	private LocalDate _dDeparture;
+	@CreationTimestamp
+	//@Temporal(TemporalType.TIMESTAMP)
+	private LocalDate _dTimeNow;
+	
 
 	public Scale() {}
 	
@@ -27,27 +36,25 @@ public class Scale {
 	 * @param dArrive: Horario de llegada
 	 * @param dDeparture: Horario de salida
 	 */
-	public Scale(int iScaleId, String sPort,
-			LocalTime dTimeNow, LocalTime dArrive, LocalTime dDeparture) {
+	public Scale(int iScaleId, String sPort, LocalDate dArrive, LocalDate dDeparture) {
 		_iScaleId = iScaleId;
 		_sPort = sPort;
 		_dArrive = dArrive;
 		_dDeparture = dDeparture;
-		_dTimeNow = dTimeNow;
+		_dTimeNow = LocalDate.now();
 	}
 
 
 
 	public int getScaleId() {return _iScaleId;}
 	public String getPort() {return _sPort;}
-	public LocalTime getTimeNow() {return _dTimeNow;}
-	public LocalTime getArrive() {return _dArrive;}
-	public LocalTime getDeparture() {return _dDeparture;}
+	public LocalDate getArrive() {return _dArrive;}
+	public LocalDate getDeparture() {return _dDeparture;}
 	
 	public void setScaleId(int iScaleId) { _iScaleId = iScaleId;}
 	public void setPort(String sPort) { _sPort = sPort;}
-	public void setArrive(LocalTime dArrive) { _dArrive = dArrive;}
-	public void setDeparture(LocalTime dDeparture) { _dDeparture = dDeparture;}
-	public void setTimeNow(LocalTime dTimeNow) {_dTimeNow = dTimeNow;}
+	public void setArrive(LocalDate dArrive) { _dArrive = dArrive;}
+	public void setDeparture(LocalDate dDeparture) { _dDeparture = dDeparture;}
+	
 }
 	

@@ -1,9 +1,13 @@
 package es.uca.iw.wp.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Excursion {
@@ -11,35 +15,35 @@ public class Excursion {
 	@GeneratedValue
 	private int _iId;
 	
-	private int _iCityId;
 	private String _strExcursionName;
-	private String _strDescripcion;
+	private String _strDescription;
 	private double _dPrice;
-	private int _iDuracion;
+	private int _iDuration;
 	private double _dCancelationPay;
+	
 	
 	@ManyToOne
 	private Book _oBook;
 	
-	public Excursion(int iCityId, String strExcursionName, String strDescripcion, double dPrice, int iDuracion, double dCancelationPay) {
-		setCityId(_iCityId);
+
+	
+	public Excursion() {}
+	public Excursion(String strExcursionName, String strDescription, double dPrice, int iDuration, double dCancelationPay) {
 		_strExcursionName = strExcursionName;
-		_strDescripcion = strDescripcion;
+		_strDescription = strDescription;
 		_dPrice = dPrice;
-		_iDuracion = iDuracion;
+		_iDuration = iDuration;
 		_dCancelationPay = dCancelationPay;
 	}
 	
 	public String getExcursionName() {return _strExcursionName;}
-	public String getDescripcion() {return _strDescripcion;}
+	public String getDescription() {return _strDescription;}
 	public double getPrice() {return _dPrice;}
-	public int getDuracion() {return _iDuracion;}
-	public double getCancelationPay() {return _dCancelationPay;}
+	public int getDuration() {return _iDuration;}
+
 	
 	public void setExcursionName(String excName) {_strExcursionName = excName;}
-	public void setDescripcion(String desc) {_strDescripcion = desc;}
+	public void setDescription(String desc) {_strDescription = desc;}
 	public void setPrice(double newPrice) {_dPrice = newPrice;}
-	public void setDuracion(int newDuracion) {_iDuracion = newDuracion;}
-	public void setCancelationPay(double newCanPay) {_dCancelationPay = newCanPay;}
-	public void setCityId(int id) {_iCityId = id;}
+	public void setDuration(int newDuration) {_iDuration = newDuration;}
 }
