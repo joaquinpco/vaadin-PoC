@@ -37,7 +37,7 @@ public class MainView extends AppLayout {
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
         img.setHeight("44px");
         
-        Button btnLogOut = new Button("log Out");
+        Button btnLogOut = new Button("Log Out");
         btnLogOut.getStyle().set("margin-left", "60%");
         addToNavbar(img);
         
@@ -68,6 +68,10 @@ public class MainView extends AppLayout {
         	
         	switch(e.getSelectedTab().getElement().getText())
             {
+        		case "Home":
+        		
+        		break;
+        	
             	case "Scale":
             		setContent(new ScaleView(_oScaleService));
             		break;
