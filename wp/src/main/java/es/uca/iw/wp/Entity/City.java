@@ -16,8 +16,10 @@ public class City {
 	
 	private String _sName;
 	private String _sDescrip;
+	
 	@OneToMany
 	private List<Excursion> _lstExcursion = new ArrayList<Excursion>();
+	
 	public City() {}
 	public City(String sName, String sDescrip) {
 		_sName = sName;
