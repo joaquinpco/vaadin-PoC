@@ -1,11 +1,16 @@
 package es.uca.iw.wp.spring;
 
+import java.util.Iterator;
+import java.util.List;
+
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 import es.uca.iw.wp.Entity.City;
+import es.uca.iw.wp.Entity.Excursion;
 import es.uca.iw.wp.Services.CityService;
 
 @Route("showCity")
@@ -14,6 +19,7 @@ public class CityView extends VerticalLayout{
 	private CityService _oCs;
 	private H1 _hCabecera;
 	private H2 _hContenido;
+	private VerticalLayout CityMenu = new VerticalLayout();
 	
 	public CityView(CityService oCs) {
 		_oCs = oCs;
@@ -24,8 +30,16 @@ public class CityView extends VerticalLayout{
 			
 			_hCabecera = new H1("Ciudad: " + c.getName());
 			_hContenido = new H2("Descripción: "+c.getDescrip());
+			List<Excursion> oLstExcursion = c.getExcursions();
+			Iterator<Excursion> oItrExc = oLstExcursion.iterator();
+			while(oItrExc.hasNext()) {
+				Excursion oExc = oItrExc.next();
+				CityMenu.add(
+						new Span(oExc.getExcursionName() + "\n" + oExc.getPrice() + " €"));
+				
+			}
 			
-			add(_hCabecera, _hContenido);
+			add(_hCabecera, _hContenido, CityMenu);
 		}
 		else
 		{
