@@ -37,7 +37,7 @@ public class MainView extends AppLayout {
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
         img.setHeight("44px");
         
-        Button btnLogOut = new Button("log Out");
+        Button btnLogOut = new Button("Log Out");
         btnLogOut.getStyle().set("margin-left", "60%");
         addToNavbar(img);
         
@@ -82,7 +82,8 @@ public class MainView extends AppLayout {
         			getElement().getText())
         	{
 	        	case "Restaurants":
-		        	setContent(new RestaurantView(_oRestaurantService));
+		        	setContent(new BookingView(e.getSelectedTab().
+		        			getElement().getText(), _oRestaurantService));
 		        break;
         	}
         });
