@@ -19,7 +19,7 @@ public class RestaurantService{
 		}
 		
 		
-		public Restaurant findById(int id) { return _oScRepository.findByIds(id); }
+		public Restaurant findById(Long id) { return _oScRepository.findByIds(id); }
 		
 		public Restaurant findByName(String name) { return _oScRepository.findByName(name); }
 		

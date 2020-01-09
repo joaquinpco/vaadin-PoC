@@ -15,7 +15,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, String>{
 	List<Restaurant> listRestaurant();
 	
 	@Query("select u from Restaurant u where u.id = :id ")
-	Restaurant findByIds(@Param("id") Integer id);
+	Restaurant findByIds(@Param("id") long id);
 	
 	@Query("select u from Restaurant u where u._sName = :name")
 	Restaurant findByName(@Param("name") String sName);

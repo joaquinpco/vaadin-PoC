@@ -25,6 +25,7 @@ public class BookingView extends VerticalLayout{
 	
 	private String _sBookType;
 	private Object _oServiceType;
+	private Long _lServiceId;
 	
 	private FormLayout _oLytWithFormItems = new FormLayout();
 	private ComboBox<String> _oLblBookingName = new ComboBox<>();
@@ -34,27 +35,25 @@ public class BookingView extends VerticalLayout{
 	private Button _oBtnBook = new Button("Book");
 	
 	
-	private List<Restaurant> _oLstRestaurantes;
+	private Restaurant _oCurrentRestaurant;
 	
 	
-	
-	private void initializeView(String sBookType, Object oServicio)
+	private void initializeView(String sBookType, Object oServicio, Long lServiceId)
 	{
 		
 		
 		if(oServicio instanceof RestaurantService)
 		{
-			//Booking Restaurants
+				//Booking Restaurants
 				RestaurantService oRestaurantService = (RestaurantService) oServicio;
 				
 				if(oRestaurantService.count() > 0)
 				{
-					_oLstRestaurantes = oRestaurantService.listRestaurant();
+					_oCurrentRestaurant = oRestaurantService.findById(_lServiceId);
 					
-					for(Restaurant rst : _oLstRestaurantes)
-						_oLblBookingName.setItems(rst.getName());
+					_oLblBookingName.setItems(_oCurrentRestaurant.getName());
 					
-					_oLblBookingName.setValue(_oLstRestaurantes.get(0).getName());
+					_oLblBookingName.setValue(_oCurrentRestaurant.getName());
 				}
 				else
 				{
@@ -90,12 +89,13 @@ public class BookingView extends VerticalLayout{
 	 * @param sBookType Cadena representante del servicio
 	 * @param oServicio Service ya bien sea el de Excursiones o Restaurantes
 	 */
-	public BookingView(String sBookType,Object oServicio)
+	public BookingView(String sBookType,Object oServicio, Long lServiceId)
 	{
 		_sBookType = sBookType;
 		_oServiceType = oServicio;
+		_lServiceId = lServiceId;
 		
-		initializeView(_sBookType, _oServiceType);
+		initializeView(_sBookType, _oServiceType, lServiceId);
 		
 		_oBtnBook.addClickListener(e ->{
 			

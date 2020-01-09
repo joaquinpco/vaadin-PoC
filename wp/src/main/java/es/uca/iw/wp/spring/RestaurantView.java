@@ -1,6 +1,7 @@
 package es.uca.iw.wp.spring;
 
 import com.vaadin.flow.component.accordion.*;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -36,6 +37,8 @@ public class RestaurantView extends VerticalLayout {
 	private VerticalLayout _oVrtlMenu;
 	private VerticalLayout _oVrtlNewRestaurant;
 	
+	private VerticalLayout _oMainContainer;
+	
 	private SimpleDateFormat _oSf = new SimpleDateFormat("kk:mm");
 
 	//services
@@ -49,6 +52,7 @@ public class RestaurantView extends VerticalLayout {
 	
 	public RestaurantView(RestaurantService _oRs)
 	{
+		_oMainContainer = this;
 		this._oRs=_oRs;
 		
 		//Intialize UI/UX
@@ -96,8 +100,16 @@ public class RestaurantView extends VerticalLayout {
 					);
 				}
 				_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
-				Anchor reserva = new Anchor("http://127.0.0.1:8080/showRestaurants?id_type=1&&id_booking="+oRestaurant.getId()+"", "Reserva");
+				//Anchor reserva = new Anchor("http://127.0.0.1:8080/showRestaurants?id_type=1&&id_booking="+oRestaurant.getId()+"", "Reserva");
+				Button reserva = new Button("Reserva");
 				_oAcrdnRestaurants.add("reservar", reserva);
+				
+				reserva.addClickListener(e->{
+					Long iIdRestaurant = oRestaurant.getId();
+					_oMainContainer.removeAll();
+					_oMainContainer.add(new BookingView("Restaurants", _oRs, iIdRestaurant));
+					
+				});
 				
 				
 				
