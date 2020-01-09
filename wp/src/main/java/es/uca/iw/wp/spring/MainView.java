@@ -82,8 +82,7 @@ public class MainView extends AppLayout {
         			getElement().getText())
         	{
 	        	case "Restaurants":
-		        	setContent(new BookingView(e.getSelectedTab().
-		        			getElement().getText(), _oRestaurantService));
+		        	setContent(new RestaurantView(_oRestaurantService));
 		        break;
         	}
         });
