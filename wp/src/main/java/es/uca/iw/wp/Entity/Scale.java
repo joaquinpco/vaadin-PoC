@@ -2,15 +2,13 @@ package es.uca.iw.wp.Entity;
 
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Scale {
 	@GeneratedValue

@@ -16,6 +16,11 @@ import es.uca.iw.wp.Services.CityService;
 @Route("showCity")
 public class CityView extends VerticalLayout{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3965666028889049549L;
+	
 	private CityService _oCs;
 	private H1 _hCabecera;
 	private H2 _hContenido;

@@ -1,13 +1,10 @@
 package es.uca.iw.wp.Entity;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Excursion {
@@ -40,10 +37,12 @@ public class Excursion {
 	public String getDescription() {return _strDescription;}
 	public double getPrice() {return _dPrice;}
 	public int getDuration() {return _iDuration;}
+	public double getCancelationPay() { return _dCancelationPay; }
 
 	
 	public void setExcursionName(String excName) {_strExcursionName = excName;}
 	public void setDescription(String desc) {_strDescription = desc;}
 	public void setPrice(double newPrice) {_dPrice = newPrice;}
 	public void setDuration(int newDuration) {_iDuration = newDuration;}
+	public void setCancelationPay(double dCancelationPay) { _dCancelationPay = dCancelationPay; }
 }
