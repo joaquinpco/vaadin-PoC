@@ -2,24 +2,20 @@ package es.uca.iw.wp.spring;
 
 import com.vaadin.flow.component.accordion.*;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Route;
 
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
 import es.uca.iw.wp.Entity.Food;
 import es.uca.iw.wp.Entity.Restaurant;
-import es.uca.iw.wp.Services.FoodService;
 import es.uca.iw.wp.Services.RestaurantService;
 
-@Route("showRestaurants")
+@Secured({"user", "admin"})
 public class RestaurantView extends VerticalLayout {
 	/**
 	 * 
@@ -50,10 +46,13 @@ public class RestaurantView extends VerticalLayout {
 		_oAcrdnList = new Accordion();
 	}
 	
-	public RestaurantView(RestaurantService _oRs)
+	public RestaurantView(RestaurantService oRs)
 	{
+		//Get Main container reference
 		_oMainContainer = this;
-		this._oRs=_oRs;
+		
+		//Asign Restaurant service
+		_oRs=oRs;
 		
 		//Intialize UI/UX
 		initUIView();
@@ -119,7 +118,5 @@ public class RestaurantView extends VerticalLayout {
 		
 		add(_oAcrdnList);
 	}
-	/*
-	newRestaurant.add(//nombre del restaurante al añadirlo	
-	);*/
+	
 }

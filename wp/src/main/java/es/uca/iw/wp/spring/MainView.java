@@ -1,6 +1,7 @@
 package es.uca.iw.wp.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -17,6 +18,7 @@ import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
 
 @Route("")
+@Secured({"admin", "user"})
 public class MainView extends AppLayout {
 
     /**
@@ -81,6 +83,8 @@ public class MainView extends AppLayout {
             }
         });
         
+        //We don´t select at first
+        subTabs.setSelectedTab(null);
         subTabs.addSelectedChangeListener(e->{
         	switch(e.getSelectedTab().
         			getElement().getText())

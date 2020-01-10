@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 
+import org.springframework.security.access.annotation.Secured;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -18,6 +18,7 @@ import com.vaadin.flow.component.timepicker.TimePicker;
 import es.uca.iw.wp.Entity.Restaurant;
 import es.uca.iw.wp.Services.RestaurantService;
 
+@Secured({"admin", "user"})
 public class BookingView extends VerticalLayout{
 
 	/**
