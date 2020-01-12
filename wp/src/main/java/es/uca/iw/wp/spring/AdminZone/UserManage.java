@@ -1,16 +1,20 @@
 package es.uca.iw.wp.spring.AdminZone;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.treegrid.TreeGrid;
 
 import es.uca.iw.wp.Entity.User;
 import es.uca.iw.wp.Repository.UserRepository;
@@ -26,7 +30,8 @@ public class UserManage extends VerticalLayout{
 	private TextField _txtFirstName, _txtLastName;
 	private PasswordField _oPwdPassword;
 	private Select<String> _oSlctValueSelect;
-	private Button _oBtnNewUser;
+	private Button _oBtnNewUser, _oBtnShowUsers;
+	private Grid<User> oGrid;
 	
 	private UserRepository _oUsrRepository;
 	private PasswordEncoder _oPasswordEncoder;
@@ -52,11 +57,16 @@ public class UserManage extends VerticalLayout{
 	    _oSlctValueSelect.setValue("admin");
 	    
 	    _oBtnNewUser = new Button("Register");
+	    _oBtnShowUsers = new Button("Show Users");
 	    
+	    oGrid = new Grid<>();
+	    
+	    
+	    
+	    //oGrid.getTreeData().addItems(lstUser.get(0), lstUser);
 		   
 	    _oColumnLayout.add(_txtFirstName, _txtLastName, _oPwdPassword, _oSlctValueSelect);
-	    add(_oColumnLayout);
-	    add(_oBtnNewUser);
+	    add(_oColumnLayout, _oBtnNewUser, oGrid, _oBtnShowUsers);
 	}
 	
 	public UserManage(UserRepository oUsrRepository, PasswordEncoder oPasswordEncoder) 
@@ -75,6 +85,16 @@ public class UserManage extends VerticalLayout{
 			
 			_oUsrRepository.save(oUser);
 			Notification.show("User added to our System.");
+		});
+		
+		_oBtnShowUsers.addClickListener(e->{
+			List<User> oLstUser = _oUsrRepository.findAll();
+			
+			oGrid.setItems(oLstUser);
+			oGrid.addColumn(User::getName).setHeader("Name");
+			oGrid.addColumn(User::getLastName).setHeader("Last Name");
+			oGrid.addColumn(User::getRole).setHeader("Rol");
+			//oGrid.getTreeData().addItems(oLstUser.get(0), oLstUser);
 		});
 	}
 	

@@ -1,5 +1,7 @@
 package es.uca.iw.wp.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,6 +39,11 @@ public class UserService implements UserDetailsService{
 			throw new UsernameNotFoundException(sName);
 		
 		return oUser;
+	}
+	
+	public List<User> getUserList()
+	{
+		return _oUsrRepository.findAll();
 	}
 
 }
