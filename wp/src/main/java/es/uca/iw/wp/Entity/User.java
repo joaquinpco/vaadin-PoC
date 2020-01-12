@@ -8,10 +8,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Entity
@@ -29,6 +32,12 @@ public class User implements UserDetails
 	private String _sName, _sLastName, _sPassword;
 	private int _iAccessCode;
 	private String _sRole;
+	
+	@ManyToMany(mappedBy="_lstUser")
+	private List<Ship> _lstShip;
+	
+	@OneToMany(mappedBy="_oUser")
+	private List<Invoice> _lstInvoice;
 	
 	public User() {}
 	
@@ -59,7 +68,11 @@ public class User implements UserDetails
 	public void setName(String sNombre) { _sName = sNombre; }
 	public void setLastName(String sLastName) { _sLastName = sLastName; }
 	public void setAccessCode(int iAccessCode) { _iAccessCode = iAccessCode; }
-	public void setPassword(String sPassword) { _sPassword = sPassword; }
+	public void setPassword(String sPassword) 
+	{
+		_sPassword = sPassword; 
+	}
+	public void setRole(String sRole) { _sRole = sRole; }
 	
 	@Override
 	public String toString() { return "" + getName() + " " + getLastName(); }
