@@ -26,7 +26,7 @@ public class UserView extends VerticalLayout{
 		
 		H2 h2LastName = new H2("Last Name:" + oUser.getLastName());
 		
-		_oBtnMisGastos = new Button("My expenses");
+		_oBtnMisGastos = new Button("My invoices");
 		
 		add(h2Name, h2LastName, _oBtnMisGastos);
 	}
