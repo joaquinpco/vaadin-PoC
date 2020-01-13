@@ -1,32 +1,26 @@
 package es.uca.iw.wp.spring;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
-import com.vaadin.flow.component.ClickNotifier;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.router.Route;
 
 import es.uca.iw.wp.Entity.Scale;
-import es.uca.iw.wp.Repository.ScaleRepository;
 import es.uca.iw.wp.Services.ScaleService;
 
-
-@Route("showScales")
-
+@Secured({"user","admin"})
 public class ScaleView extends VerticalLayout {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4995444170616023933L;
+
 	@Autowired
 	private ScaleService _oScService;
 	

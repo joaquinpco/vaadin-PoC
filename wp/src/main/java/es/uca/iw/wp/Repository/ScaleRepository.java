@@ -1,21 +1,16 @@
 package es.uca.iw.wp.Repository;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import es.uca.iw.wp.Entity.Restaurant;
 import es.uca.iw.wp.Entity.Scale;
 
 public interface ScaleRepository extends JpaRepository<Scale, Integer>{
 	
-	@Query("select u from Scale u where u._iScaleId = :id")
+	@Query("select u from Scale u where u.id = :id")
 	Scale findByIds(@Param("id") Integer id);
 	
 	/*@Query("select u from Scale u where u._dTimeNow is between u._dArrive= :dArrive and u._dDeparture= :dDeparture")
