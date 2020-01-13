@@ -18,13 +18,14 @@ public class Excursion {
 	private int _iDuration;
 	private double _dCancelationPay;
 	
+	@ManyToOne
+	private City _oCity;
 	
 	@ManyToOne
 	private Book _oBook;
 	
-
-	
 	public Excursion() {}
+	
 	public Excursion(String strExcursionName, String strDescription, double dPrice, int iDuration, double dCancelationPay) {
 		_strExcursionName = strExcursionName;
 		_strDescription = strDescription;
