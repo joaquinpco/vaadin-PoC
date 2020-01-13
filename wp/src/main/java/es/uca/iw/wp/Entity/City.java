@@ -22,7 +22,8 @@ public class City {
 	private double _dLat;
 	public String _sImagePath;
 	public String _sUrlVideo;
-	@OneToMany(fetch=FetchType.EAGER)
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="_oCity")
 	private List<Excursion> _lstExcursion = new ArrayList<Excursion>();
 	
 	public City() {}
