@@ -58,9 +58,7 @@ public class MainView extends AppLayout {
 	
 	@Autowired
 	private BookRepository _oBookRepository;
-	
-	@Autowired
-	private ShipRepository _oShipRepository;
+
 	
 	public void initializeView(User oUser)
 	{	
@@ -137,9 +135,6 @@ public class MainView extends AppLayout {
             		break;
             	case "Restaurant Manage":
             		setContent(new RestaurantManage(_oRestaurantRepository));
-            		break;
-            	case "Ship Manage":
-            		setContent(new ShipManagement(_oShipRepository));
             		break;
             }
         });
