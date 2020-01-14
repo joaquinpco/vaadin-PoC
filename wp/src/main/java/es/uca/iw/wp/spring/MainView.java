@@ -17,10 +17,12 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Route;
 
 import es.uca.iw.wp.Entity.User;
+import es.uca.iw.wp.Repository.RestaurantRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
+import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
 
 @Route("")
@@ -40,7 +42,7 @@ public class MainView extends AppLayout {
 	
 	@Autowired
 	private UserRepository _oUsrRepository;
-	
+	private RestaurantRepository _oRestaurantRepository;
 	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
 	
@@ -73,7 +75,7 @@ public class MainView extends AppLayout {
         
         //En caso del administrador añadimos los menús
         if(oUser.getRole().equals("admin"))
-        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"));
+        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"));
     
 	}
 		
@@ -99,10 +101,7 @@ public class MainView extends AppLayout {
         	
         	switch(e.getSelectedTab().getElement().getText())
             {
-        		case "Home":
-        			
-        		break;
-        	
+        		
             	case "Scale":
             		setContent(new ScaleView(_oScaleService));
             		break;
@@ -110,8 +109,10 @@ public class MainView extends AppLayout {
             		setContent(new UserView());
             		break;
             	case "User Manage":
-            		
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
+            		break;
+            	case "Restaurant Manage":
+            		setContent(new RestaurantManage(_oRestaurantRepository));
             		break;
             }
         });
