@@ -2,6 +2,7 @@ package es.uca.iw.wp.Entity;
 
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,12 +17,12 @@ public class Scale {
 	private long id;
 	private String _sPort;
 	//@Temporal(TemporalType.TIMESTAMP)
-	private LocalDate _dArrive;
+	private Date _dArrive;
 	//@Temporal(TemporalType.TIMESTAMP)
-	private LocalDate _dDeparture;
+	private Date _dDeparture;
 	@CreationTimestamp
 	//@Temporal(TemporalType.TIMESTAMP)
-	private LocalDate _dTimeNow;
+	private Date _dTimeNow;
 	
 
 	public Scale() {}
@@ -34,24 +35,23 @@ public class Scale {
 	 * @param dArrive: Horario de llegada
 	 * @param dDeparture: Horario de salida
 	 */
-	public Scale(long idScale, String sPort, LocalDate dArrive, LocalDate dDeparture) {
+	public Scale(long idScale, String sPort, Date dArrive, Date dDeparture) {
 		id = idScale;
 		_sPort = sPort;
 		_dArrive = dArrive;
 		_dDeparture = dDeparture;
-		_dTimeNow = LocalDate.now();
 	}
 
 
 
 	public long getScaleId() {return id;}
 	public String getPort() {return _sPort;}
-	public LocalDate getArrive() {return _dArrive;}
-	public LocalDate getDeparture() {return _dDeparture;}
+	public Date getArrive() {return _dArrive;}
+	public Date getDeparture() {return _dDeparture;}
 	
 	public void setPort(String sPort) { _sPort = sPort;}
-	public void setArrive(LocalDate dArrive) { _dArrive = dArrive;}
-	public void setDeparture(LocalDate dDeparture) { _dDeparture = dDeparture;}
+	public void setArrive(Date dArrive) { _dArrive = dArrive;}
+	public void setDeparture(Date dDeparture) { _dDeparture = dDeparture;}
 	
 }
 	

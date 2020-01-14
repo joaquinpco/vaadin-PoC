@@ -54,7 +54,7 @@ public class RestaurantView extends VerticalLayout {
 		//Get Main container reference
 		_oMainContainer = this;
 		
-		//Asign Restaurant service
+		//Assign Restaurant service
 		_oRs=oRs;
 		
 		_oBookRep = oBookRep;

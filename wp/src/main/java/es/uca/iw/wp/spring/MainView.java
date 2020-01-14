@@ -51,13 +51,14 @@ public class MainView extends AppLayout {
 	private RestaurantRepository _oRestaurantRepository;
 	
 	@Autowired
+	private ShipRepository _oShipRepository;
+	
+	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
 	
 	@Autowired
 	private BookRepository _oBookRepository;
-	
-	@Autowired
-	private ShipRepository _oShipRepository;
+
 	
 	public void initializeView(User oUser)
 	{	
@@ -129,11 +130,11 @@ public class MainView extends AppLayout {
             	case "User Manage":
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
             		break;
-            	case "Restaurant Manage":
-            		setContent(new RestaurantManage(_oRestaurantRepository));
-            		break;
             	case "Ship Manage":
             		setContent(new ShipManagement(_oShipRepository));
+            		break;
+            	case "Restaurant Manage":
+            		setContent(new RestaurantManage(_oRestaurantRepository));
             		break;
             }
         });
