@@ -75,9 +75,6 @@ public class ShipManagement extends VerticalLayout{
 				Ship _oShip = new Ship();
 				_oShip.setName(_txtName.getValue());
 				_oShip.setFlats(Integer.valueOf(_txtFlats.getValue()));
-				while(Integer.valueOf(_txtStars.getValue()) < 1 || Integer.valueOf(_txtStars.getValue()) > 5) {
-					Notification.show("Stars must be within 1 and 5");
-				}
 				_oShip.setStars(Integer.valueOf(_txtStars.getValue()));
 				_oShipRepo.save(_oShip);
 				Notification.show("Ship added to our System");
