@@ -60,4 +60,19 @@ public class Book {
 	public int getAforoPosicionUsr() { return _iAforoPosicionUsr; }
 	public int getIdTabla( ) {return _iIdTabla; }
 	
+	public void setTipo(int iTipo) { _iTipo = iTipo; }
+	public void setFechaReserva(Date dFechaReserva){ _dFechaReserva = dFechaReserva; }
+	public void setGasto(double dGasto){ _dGasto= dGasto; }
+	
+	//Book user table  
+	public void setAforoPosicionUser(int iAforoPosicionUsr) { _iAforoPosicionUsr = iAforoPosicionUsr; }
+	
+	//1 Restaurants 2 Excursions
+	public void setIdTabla(int iIdTabla) { _iIdTabla = iIdTabla; }
+	
+	public void setUser(User oUser) { _oUser = oUser; }
+	
+	
+	
+	
 }

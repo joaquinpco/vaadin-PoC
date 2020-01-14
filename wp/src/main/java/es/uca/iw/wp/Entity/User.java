@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -39,7 +40,7 @@ public class User implements UserDetails
 	@OneToMany(mappedBy="_oUser")
 	private List<Invoice> _lstInvoice;
 	
-	@OneToMany(mappedBy="_oUser")
+	@OneToMany(mappedBy="_oUser", fetch=FetchType.LAZY)
 	private List<Book> _lstBook;
 	
 	public User() {}
@@ -75,7 +76,13 @@ public class User implements UserDetails
 	{
 		_sPassword = sPassword; 
 	}
+	
 	public void setRole(String sRole) { _sRole = sRole; }
+	
+	public void addUser(Book oBook)
+	{	
+		_lstBook.add(oBook);
+	}
 	
 	@Override
 	public String toString() { return "" + getName() + " " + getLastName(); }

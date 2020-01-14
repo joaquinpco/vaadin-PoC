@@ -13,6 +13,7 @@ import org.springframework.security.access.annotation.Secured;
 
 import es.uca.iw.wp.Entity.Food;
 import es.uca.iw.wp.Entity.Restaurant;
+import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Services.RestaurantService;
 
 @Secured({"user", "admin"})
@@ -41,18 +42,22 @@ public class RestaurantView extends VerticalLayout {
 	
 	private RestaurantService _oRs;
 	
+	private BookRepository _oBookRep;
+	
 	private void initUIView()
 	{
 		_oAcrdnList = new Accordion();
 	}
 	
-	public RestaurantView(RestaurantService oRs)
+	public RestaurantView(RestaurantService oRs, BookRepository oBookRep)
 	{
 		//Get Main container reference
 		_oMainContainer = this;
 		
 		//Asign Restaurant service
 		_oRs=oRs;
+		
+		_oBookRep = oBookRep;
 		
 		//Intialize UI/UX
 		initUIView();
@@ -106,7 +111,7 @@ public class RestaurantView extends VerticalLayout {
 				reserva.addClickListener(e->{
 					Long iIdRestaurant = oRestaurant.getId();
 					_oMainContainer.removeAll();
-					_oMainContainer.add(new BookingView("Restaurants", _oRs, iIdRestaurant));
+					_oMainContainer.add(new BookingView("Restaurants", _oRs, iIdRestaurant, _oBookRep));
 					
 				});
 				
