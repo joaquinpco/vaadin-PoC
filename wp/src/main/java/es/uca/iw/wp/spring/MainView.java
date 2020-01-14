@@ -59,6 +59,9 @@ public class MainView extends AppLayout {
 	@Autowired
 	private BookRepository _oBookRepository;
 	
+	@Autowired
+	private ShipRepository _oShipRepository;
+	
 	public void initializeView(User oUser)
 	{	
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
@@ -79,6 +82,7 @@ public class MainView extends AppLayout {
         
         _tabs = new Tabs(new Tab("Home"), new Tab("Scale"), 
         		book, new Tab("Profile"));
+        _tabs.setSelectedIndex(0);
         _tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(_tabs);
         
@@ -133,6 +137,9 @@ public class MainView extends AppLayout {
             		break;
             	case "Restaurant Manage":
             		setContent(new RestaurantManage(_oRestaurantRepository));
+            		break;
+            	case "Ship Manage":
+            		setContent(new ShipManagement(_oShipRepository));
             		break;
             }
         });
