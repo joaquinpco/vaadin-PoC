@@ -29,7 +29,7 @@ public class Book {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_oBook")
 	private List<Excursion> _oLstExcursion = new ArrayList<Excursion>();
-	
+
 	@ManyToOne
 	private User _oUser;
 	
