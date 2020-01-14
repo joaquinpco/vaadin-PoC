@@ -11,7 +11,8 @@ public class HomeView extends VerticalLayout
 
 public HomeView()
  {
-	 //this.setSizeFull();
+	 this.setSizeFull();
 	 this.addClassName("homeScreen");
+	 this.getStyle().set("background", "url(../src/main/webapp/frontend/img/Fondo.png)");
  }
 }
