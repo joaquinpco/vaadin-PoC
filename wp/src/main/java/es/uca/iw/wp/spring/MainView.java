@@ -17,6 +17,7 @@ import com.vaadin.flow.router.Route;
 import es.uca.iw.wp.Entity.User;
 
 import es.uca.iw.wp.Repository.RestaurantRepository;
+import es.uca.iw.wp.Repository.ShipRepository;
 import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
@@ -24,6 +25,7 @@ import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
 import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
+import es.uca.iw.wp.spring.AdminZone.ShipManagement;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
 
 @Route("")
@@ -47,6 +49,9 @@ public class MainView extends AppLayout {
 	
 	@Autowired
 	private RestaurantRepository _oRestaurantRepository;
+	
+	@Autowired
+	private ShipRepository _oShipRepository;
 	
 	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
@@ -122,6 +127,9 @@ public class MainView extends AppLayout {
             		break;
             	case "User Manage":
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
+            		break;
+            	case "Ship Manage":
+            		setContent(new ShipManagement(_oShipRepository));
             		break;
             	case "Restaurant Manage":
             		setContent(new RestaurantManage(_oRestaurantRepository));

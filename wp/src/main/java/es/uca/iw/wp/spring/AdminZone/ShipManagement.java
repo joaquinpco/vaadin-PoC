@@ -59,8 +59,8 @@ public class ShipManagement extends VerticalLayout{
 		_btnSaveShip.addClickListener(e->{
 			Ship _oShip = new Ship();
 			_oShip.setName(_txtName.getValue());
-			_oShip.setFlats(Integer.getInteger(_txtFlats.getValue()));
-			_oShip.setStars(Integer.getInteger(_txtStars.getValue()));
+			_oShip.setFlats(Integer.valueOf(_txtFlats.getValue()));
+			_oShip.setStars(Integer.valueOf(_txtStars.getValue()));
 			_oShipRepo.save(_oShip);
 			Notification.show("Ship added to our System");
 		});
