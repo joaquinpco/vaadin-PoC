@@ -39,6 +39,9 @@ public class User implements UserDetails
 	@OneToMany(mappedBy="_oUser")
 	private List<Invoice> _lstInvoice;
 	
+	@OneToMany(mappedBy="_oUser")
+	private List<Book> _lstBook;
+	
 	public User() {}
 	
 	/**

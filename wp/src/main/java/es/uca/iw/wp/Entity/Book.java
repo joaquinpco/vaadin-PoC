@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -28,6 +29,9 @@ public class Book {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_oBook")
 	private List<Excursion> _oLstExcursion = new ArrayList<Excursion>();
+	
+	@ManyToOne
+	private User _oUser;
 	
 	public Book(){}
 	

@@ -90,6 +90,7 @@ public class UserManage extends VerticalLayout{
 		_oBtnShowUsers.addClickListener(e->{
 			List<User> oLstUser = _oUsrRepository.findAll();
 			
+			oGrid.removeAllColumns();
 			oGrid.setItems(oLstUser);
 			oGrid.addColumn(User::getName).setHeader("Name");
 			oGrid.addColumn(User::getLastName).setHeader("Last Name");
