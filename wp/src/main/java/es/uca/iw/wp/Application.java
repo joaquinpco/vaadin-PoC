@@ -30,8 +30,9 @@ public class Application extends SpringBootServletInitializer {
     @Bean
 	public CommandLineRunner loadData(UserRepository repository) {
 		return (args) -> {
-			if(repository.count() == 0)
-				repository.save(new User("Pablo", "Piedad", passwordEncoder.encode("1234"), 1111));
+			if(repository.count() == 0){
+				repository.save(new User("pablo", "piedad", passwordEncoder.encode("1234"), "admin", 1111));
+			}
 		};
     }
 }

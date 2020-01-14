@@ -1,21 +1,22 @@
 package es.uca.iw.wp.spring;
 
 import com.vaadin.flow.component.accordion.*;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Route;
 
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
+import es.uca.iw.wp.Entity.Food;
 import es.uca.iw.wp.Entity.Restaurant;
+import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Services.RestaurantService;
 
-@Route("showRestaurants")
+@Secured({"user", "admin"})
 public class RestaurantView extends VerticalLayout {
 	/**
 	 * 
@@ -33,20 +34,31 @@ public class RestaurantView extends VerticalLayout {
 	private VerticalLayout _oVrtlMenu;
 	private VerticalLayout _oVrtlNewRestaurant;
 	
+
+	private VerticalLayout _oMainContainer;
+	
 	private SimpleDateFormat _oSf = new SimpleDateFormat("kk:mm");
 
 	//services
 	
 	private RestaurantService _oRs;
 	
+	private BookRepository _oBookRep;
+	
 	private void initUIView()
 	{
 		_oAcrdnList = new Accordion();
 	}
 	
-	public RestaurantView(RestaurantService _oRs )
+	public RestaurantView(RestaurantService oRs, BookRepository oBookRep)
 	{
-		this._oRs=_oRs;
+		//Get Main container reference
+		_oMainContainer = this;
+		
+		//Assign Restaurant service
+		_oRs=oRs;
+		
+		_oBookRep = oBookRep;
 		
 		//Intialize UI/UX
 		initUIView();
@@ -55,6 +67,8 @@ public class RestaurantView extends VerticalLayout {
 		List<Restaurant> oLst = _oRs.listRestaurant();
 		
 		Iterator<Restaurant> oIter = oLst.iterator();
+		
+
 		
 		while(oIter.hasNext())
 		{
@@ -80,20 +94,35 @@ public class RestaurantView extends VerticalLayout {
 			
 			_oAcrdnRestaurants.add("Mesas", _oVrtltables);
 			
-			//while(//mas elementos de la bbdd para comidas enlazadas a restaurant) {
-			_oVrtlMenu.add(
-						new Span("Nombre Plato, Precio Plato €")//sustituir por el nombre del plato de la bbdd
-				);
-			//}
-			_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
+			List<Food> oLstFood = oRestaurant.getFoods();
+			Iterator<Food> oItrFood = oLstFood.iterator();
 			
-			_oVrtlNewRestaurant.add(_oAcrdnRestaurants);
-			_oAcrdnList.add(oRestaurant.getName(), _oVrtlNewRestaurant);
-		}
+			while(oItrFood.hasNext()) {
+			
+				Food oFood = oItrFood.next();
+				_oVrtlMenu.add(
+							new Span(oFood.getName() +"\t"+ oFood.getPrice()+"€")//sustituir por el nombre del plato de la bbdd
+					);
+				}
+				_oAcrdnRestaurants.add("Menú", _oVrtlMenu);
+				//Anchor reserva = new Anchor("http://127.0.0.1:8080/showRestaurants?id_type=1&&id_booking="+oRestaurant.getId()+"", "Reserva");
+				Button reserva = new Button("Reserva");
+				_oAcrdnRestaurants.add("reservar", reserva);
+				
+				reserva.addClickListener(e->{
+					Long iIdRestaurant = oRestaurant.getId();
+					_oMainContainer.removeAll();
+					_oMainContainer.add(new BookingView("Restaurants", _oRs, iIdRestaurant, _oBookRep));
+					
+				});
+				
+				
+				
+				_oVrtlNewRestaurant.add(_oAcrdnRestaurants);
+				_oAcrdnList.add(oRestaurant.getName(), _oVrtlNewRestaurant);
+		 	}
 		
 		add(_oAcrdnList);
 	}
-	/*
-	newRestaurant.add(//nombre del restaurante al añadirlo	
-	);*/
+	
 }

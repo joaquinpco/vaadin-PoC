@@ -1,8 +1,6 @@
 package es.uca.iw.wp;
 
 
-import static org.junit.Assert.assertThat;
-
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +31,7 @@ public class LoginTest
 		String sNombre = "";
 		//Test
 		User testUser = new User("Joaquin", "Perez Calderon Ortiz", 
-				oPasswordEncoder.encode("1234"), 1112);
+				oPasswordEncoder.encode("1234"), "admin", 1112);
 		
 		//Almacenamos el usuario
 		oUserRepository.save(testUser);
