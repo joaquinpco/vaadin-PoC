@@ -17,6 +17,7 @@ import com.vaadin.flow.router.Route;
 import es.uca.iw.wp.Entity.User;
 
 import es.uca.iw.wp.Repository.RestaurantRepository;
+import es.uca.iw.wp.Repository.ShipRepository;
 import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
@@ -24,6 +25,7 @@ import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
 import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
+import es.uca.iw.wp.spring.AdminZone.ShipManagement;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
 
 @Route("")
@@ -54,6 +56,9 @@ public class MainView extends AppLayout {
 	@Autowired
 	private BookRepository _oBookRepository;
 	
+	@Autowired
+	private ShipRepository _oShipRepository;
+	
 	public void initializeView(User oUser)
 	{	
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
@@ -74,6 +79,7 @@ public class MainView extends AppLayout {
         
         _tabs = new Tabs(new Tab("Home"), new Tab("Scale"), 
         		book, new Tab("Profile"));
+        _tabs.setSelectedIndex(0);
         _tabs.setOrientation(Tabs.Orientation.VERTICAL);
         addToDrawer(_tabs);
         
@@ -125,6 +131,9 @@ public class MainView extends AppLayout {
             		break;
             	case "Restaurant Manage":
             		setContent(new RestaurantManage(_oRestaurantRepository));
+            		break;
+            	case "Ship Manage":
+            		setContent(new ShipManagement(_oShipRepository));
             		break;
             }
         });

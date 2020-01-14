@@ -13,6 +13,12 @@ import es.uca.iw.wp.Entity.Ship;
 import es.uca.iw.wp.Repository.ShipRepository;
 
 public class ShipManagement extends VerticalLayout{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3269208552438697502L;
+	
 	private FormLayout _oShipLayout;
 	private TextField _txtName;
 	private TextField _txtFlats;
@@ -31,14 +37,17 @@ public class ShipManagement extends VerticalLayout{
 		_txtName = new TextField();
 		_txtName.setLabel("Name of the ship");
 		_txtName.setPlaceholder("Ship's name");
+		_txtName.setRequired(true);
 		
 		_txtFlats = new TextField();
 		_txtFlats.setLabel("Flats of the ship");
 		_txtFlats.setPlaceholder("Number of flats");
+		_txtFlats.setRequired(true);
 		
 		_txtStars = new TextField();
 		_txtStars.setLabel("Stars of the ship");
 		_txtStars.setPlaceholder("1 - 5");
+		_txtStars.setRequired(true);
 		
 		_oShipLayout.add(_txtName, _txtFlats, _txtStars);
 		
@@ -57,16 +66,27 @@ public class ShipManagement extends VerticalLayout{
 		_oShipRepo = oShipRepo;
 		
 		_btnSaveShip.addClickListener(e->{
-			Ship _oShip = new Ship();
-			_oShip.setName(_txtName.getValue());
-			_oShip.setFlats(Integer.getInteger(_txtFlats.getValue()));
-			_oShip.setStars(Integer.getInteger(_txtStars.getValue()));
-			_oShipRepo.save(_oShip);
-			Notification.show("Ship added to our System");
+			if(_txtName.getValue().equals("") || _txtFlats.getValue().equals("") || _txtStars.equals(""))
+			{
+				Notification.show("Fields are required");
+			}
+			else
+			{
+				Ship _oShip = new Ship();
+				_oShip.setName(_txtName.getValue());
+				_oShip.setFlats(Integer.getInteger(_txtFlats.getValue()));
+				_oShip.setStars(Integer.getInteger(_txtStars.getValue()));
+				_oShipRepo.save(_oShip);
+				Notification.show("Ship added to our System");
+			}
 		});
 		
 		_btnShowShips.addClickListener(e->{
+			
 			List<Ship> oLstShip = _oShipRepo.findAll();
+		
+			//Prevent multiple columns
+			_oGridShips.removeAllColumns();
 			
 			_oGridShips.setItems(oLstShip);
 			_oGridShips.addColumn(Ship::getName).setHeader("Name");
