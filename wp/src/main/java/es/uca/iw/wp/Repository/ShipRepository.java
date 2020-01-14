@@ -1,5 +1,7 @@
 package es.uca.iw.wp.Repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,4 +12,7 @@ public interface ShipRepository extends JpaRepository<Ship, String>{
 	
 	@Query("select u from Ship u where u._sName= :name")
 	Ship findByName(@Param("name") String name);
+	
+	@Query("select u from Ship u")
+	List<Ship> findAll();
 }

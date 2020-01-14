@@ -1,7 +1,5 @@
 package es.uca.iw.wp.spring;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +15,9 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.router.Route;
 
 import es.uca.iw.wp.Entity.User;
+
 import es.uca.iw.wp.Repository.RestaurantRepository;
+import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
 import es.uca.iw.wp.Services.RestaurantService;
@@ -45,6 +45,9 @@ public class MainView extends AppLayout {
 	private RestaurantRepository _oRestaurantRepository;
 	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
+	
+	@Autowired
+	private BookRepository _oBookRepository;
 	
 	public void initializeView(User oUser)
 	{	
@@ -124,7 +127,7 @@ public class MainView extends AppLayout {
         			getElement().getText())
         	{
 	        	case "Restaurants":
-		        	setContent(new RestaurantView(_oRestaurantService));
+		        	setContent(new RestaurantView(_oRestaurantService, _oBookRepository));
 		        break;
         	}
         });

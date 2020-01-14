@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -28,6 +29,9 @@ public class Book {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_oBook")
 	private List<Excursion> _oLstExcursion = new ArrayList<Excursion>();
+
+	@ManyToOne
+	private User _oUser;
 	
 	public Book(){}
 	
@@ -55,5 +59,20 @@ public class Book {
 	public double getGasto() { return _dGasto; }
 	public int getAforoPosicionUsr() { return _iAforoPosicionUsr; }
 	public int getIdTabla( ) {return _iIdTabla; }
+	
+	public void setTipo(int iTipo) { _iTipo = iTipo; }
+	public void setFechaReserva(Date dFechaReserva){ _dFechaReserva = dFechaReserva; }
+	public void setGasto(double dGasto){ _dGasto= dGasto; }
+	
+	//Book user table  
+	public void setAforoPosicionUser(int iAforoPosicionUsr) { _iAforoPosicionUsr = iAforoPosicionUsr; }
+	
+	//1 Restaurants 2 Excursions
+	public void setIdTabla(int iIdTabla) { _iIdTabla = iIdTabla; }
+	
+	public void setUser(User oUser) { _oUser = oUser; }
+	
+	
+	
 	
 }

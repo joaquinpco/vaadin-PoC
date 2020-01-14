@@ -51,4 +51,8 @@ public class City {
 		_sDescrip = descrip;
 	}
 	
+	public void setLon(float lon) { _dLon = lon;}
+	public void setLat(float lat) {_dLat = lat;}
+	public void setImagePath(String urlImage) {_sImagePath = urlImage;}
+	public void setUrlVideo (String urlVideo) {_sUrlVideo = urlVideo;}
 }

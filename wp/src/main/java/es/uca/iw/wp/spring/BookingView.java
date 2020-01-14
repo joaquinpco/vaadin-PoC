@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 
 import com.vaadin.flow.component.button.Button;
@@ -15,7 +17,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
 
+import es.uca.iw.wp.Entity.Book;
 import es.uca.iw.wp.Entity.Restaurant;
+import es.uca.iw.wp.Entity.User;
+import es.uca.iw.wp.Repository.BookRepository;
+import es.uca.iw.wp.Security.SecurityUtils;
 import es.uca.iw.wp.Services.RestaurantService;
 
 @Secured({"admin", "user"})
@@ -41,9 +47,11 @@ public class BookingView extends VerticalLayout{
 	private Restaurant _oCurrentRestaurant;
 	
 	
+	private BookRepository _oBookRep;
+	
+	
 	private void initializeView(String sBookType, Object oServicio, Long lServiceId)
 	{
-		
 		
 		if(oServicio instanceof RestaurantService)
 		{
@@ -92,11 +100,12 @@ public class BookingView extends VerticalLayout{
 	 * @param sBookType Cadena representante del servicio
 	 * @param oServicio Service ya bien sea el de Excursiones o Restaurantes
 	 */
-	public BookingView(String sBookType,Object oServicio, Long lServiceId)
+	public BookingView(String sBookType,Object oServicio, Long lServiceId, BookRepository oBookRep)
 	{
 		_sBookType = sBookType;
 		_oServiceType = oServicio;
 		_lServiceId = lServiceId;
+		_oBookRep = oBookRep;
 		
 		initializeView(_sBookType, _oServiceType, lServiceId);
 		
@@ -119,6 +128,23 @@ public class BookingView extends VerticalLayout{
 			try 
 			{
 				Date dReserva = smpDateFormatCheck.parse(sDate);
+				Integer iCustomers = Integer.valueOf(_oTxtNClient.getValue());
+				int iMesas = new Random().nextInt(_oCurrentRestaurant.getTable());
+				Book oBook = new Book();
+				//Type Restaurant
+				oBook.setTipo(1);
+				oBook.setFechaReserva(dReserva);
+				oBook.setAforoPosicionUser(iMesas);
+				
+				User oCurrentUser  = SecurityUtils.getSesionUser();
+				oBook.setUser(oCurrentUser);
+				
+				oBookRep.save(oBook);
+				
+
+				oCurrentUser.addUser(oBook);
+				
+				
 				
 			}
 			catch(Exception ex) {}
