@@ -2,6 +2,8 @@ package es.uca.iw.wp.spring;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,6 +46,7 @@ public class MainView extends AppLayout {
 	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
 	
+	@PostConstruct
 	public void initializeView(User oUser)
 	{	
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");

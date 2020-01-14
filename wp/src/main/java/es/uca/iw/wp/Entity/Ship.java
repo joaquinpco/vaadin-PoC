@@ -54,6 +54,7 @@ public class Ship {
 	public int getStars() { return _iStars; }
 	public String getName() { return _sName; }
 	
+	public void setName(String sName) {_sName = sName;}
 	public void setFlats(int iFlats) { _iFlats = iFlats; }
 	public void setStars(int iStars) { _iStars = iStars; }
 }
