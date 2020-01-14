@@ -18,6 +18,7 @@ import es.uca.iw.wp.Entity.User;
 import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
+import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
@@ -32,6 +33,7 @@ public class MainView extends AppLayout {
 	private static final long serialVersionUID = 1796776387882508405L;
 
 	private RestaurantService _oRestaurantService;
+	private ExcursionService _oExcursionService;
 	private ScaleService _oScaleService;
 	
 	private Button _btnLogOut;
@@ -80,10 +82,11 @@ public class MainView extends AppLayout {
 	}
 		
 	@Autowired
-	public MainView(RestaurantService restaurantService, ScaleService scaleService) {
+	public MainView(RestaurantService restaurantService, ScaleService scaleService, ExcursionService oExcursionService) {
 		
 		_oRestaurantService = restaurantService;
 		_oScaleService = scaleService;
+		_oExcursionService = oExcursionService;
         
 		User oUser = SecurityUtils.getSesionUser();
         //Check if admin Logged
@@ -112,9 +115,9 @@ public class MainView extends AppLayout {
             		setContent(new UserView());
             		break;
             	case "User Manage":
-            		
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
             		break;
+            		
             }
         });
         
@@ -127,6 +130,10 @@ public class MainView extends AppLayout {
 	        	case "Restaurants":
 		        	setContent(new RestaurantView(_oRestaurantService, _oBookRepository));
 		        break;
+		        
+	        	case "Excursions":
+	        		setContent(new ExcursionView(_oExcursionService));
+	        	break;
         	}
         });
         
