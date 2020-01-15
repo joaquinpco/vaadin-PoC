@@ -18,14 +18,18 @@ import es.uca.iw.wp.Entity.User;
 
 import es.uca.iw.wp.Repository.RestaurantRepository;
 import es.uca.iw.wp.Repository.ShipRepository;
+import es.uca.iw.wp.Repository.TripRepository;
 import es.uca.iw.wp.Repository.BookRepository;
+import es.uca.iw.wp.Repository.ExcursionRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
 import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
+import es.uca.iw.wp.spring.AdminZone.ExcursionManage;
 import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
 import es.uca.iw.wp.spring.AdminZone.ShipManagement;
+import es.uca.iw.wp.spring.AdminZone.TripManage;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
 
 @Route("")
@@ -49,6 +53,14 @@ public class MainView extends AppLayout {
 	
 	@Autowired
 	private RestaurantRepository _oRestaurantRepository;
+	
+	@Autowired
+
+	private ExcursionRepository _oExcursionRepository;
+	
+	@Autowired
+	private TripRepository _oTripRepository;
+	
 	
 	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
@@ -89,7 +101,7 @@ public class MainView extends AppLayout {
         
         //En caso del administrador añadimos los menús
         if(oUser.getRole().equals("admin"))
-        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"));
+        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"), new Tab("Trip Manage"), new Tab("Excursion Manage"));
     
 	}
 		
@@ -124,7 +136,7 @@ public class MainView extends AppLayout {
             		setContent(new ScaleView(_oScaleService));
             		break;
             	case "Profile":
-            		setContent(new UserView());
+            		setContent(new UserView(_oBookRepository));
             		break;
             	case "User Manage":
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
@@ -134,6 +146,12 @@ public class MainView extends AppLayout {
             		break;
             	case "Restaurant Manage":
             		setContent(new RestaurantManage(_oRestaurantRepository));
+            		break;
+            	case "Trip Manage":
+            		setContent(new TripManage(_oTripRepository));
+            		break;	
+            	case "Excursion Manage":
+            		setContent(new ExcursionManage(_oExcursionRepository));
             		break;
             }
         });

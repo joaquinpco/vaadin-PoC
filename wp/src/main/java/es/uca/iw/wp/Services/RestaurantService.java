@@ -11,7 +11,7 @@ import es.uca.iw.wp.Repository.RestaurantRepository;
 @Service
 public class RestaurantService{
 	
-		private static RestaurantRepository _oScRepository;
+		private RestaurantRepository _oScRepository;
 		
 		@Autowired
 		private RestaurantService(RestaurantRepository oScRepository) {

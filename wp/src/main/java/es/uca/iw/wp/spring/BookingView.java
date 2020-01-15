@@ -13,6 +13,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
@@ -111,43 +112,49 @@ public class BookingView extends VerticalLayout{
 		
 		_oBtnBook.addClickListener(e ->{
 			
-			//Obtenemos los resultados para almacenar
-			LocalDate oLclDate = _oDatePicker.getValue();
-			LocalTime oLclTime = _oTimePicker.getValue();
-			
-			//Get Specific data 
-			int iYear = oLclDate.getYear();
-			int iMonth = oLclDate.getMonthValue();
-			int iDay = oLclDate.getDayOfMonth();
-			
-			int iHour = oLclTime.getHour();
-			
-			SimpleDateFormat smpDateFormatCheck = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			
-			String sDate = iYear + "-" + iMonth + "-" + iDay + " " + iHour + ":00:00";
-			try 
+			if(_oTxtNClient.getValue().equals("") || _oTimePicker.getValue() == null)
 			{
-				Date dReserva = smpDateFormatCheck.parse(sDate);
-				Integer iCustomers = Integer.valueOf(_oTxtNClient.getValue());
-				int iMesas = new Random().nextInt(_oCurrentRestaurant.getTable());
-				Book oBook = new Book();
-				//Type Restaurant
-				oBook.setTipo(1);
-				oBook.setFechaReserva(dReserva);
-				oBook.setAforoPosicionUser(iMesas);
-				
-				User oCurrentUser  = SecurityUtils.getSesionUser();
-				oBook.setUser(oCurrentUser);
-				
-				oBookRep.save(oBook);
-				
-
-				oCurrentUser.addUser(oBook);
-				
-				
-				
+				Notification.show("Fill the gaps");
 			}
-			catch(Exception ex) {}
+			else
+			{
+				//Obtenemos los resultados para almacenar
+				LocalDate oLclDate = _oDatePicker.getValue();
+				LocalTime oLclTime = _oTimePicker.getValue();
+				
+				//Get Specific data 
+				int iYear = oLclDate.getYear();
+				int iMonth = oLclDate.getMonthValue();
+				int iDay = oLclDate.getDayOfMonth();
+				
+				int iHour = oLclTime.getHour();
+				
+				SimpleDateFormat smpDateFormatCheck = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				
+				String sDate = iYear + "-" + iMonth + "-" + iDay + " " + iHour + ":00:00";
+				try 
+				{
+					Date dReserva = smpDateFormatCheck.parse(sDate);
+					Integer iCustomers = Integer.valueOf(_oTxtNClient.getValue());
+					int iMesas = new Random().nextInt(_oCurrentRestaurant.getTable());
+					Book oBook = new Book();
+					//Type Restaurant
+					oBook.setTipo(1);
+					oBook.setFechaReserva(dReserva);
+					oBook.setAforoPosicionUser(iMesas);
+					
+					User oCurrentUser  = SecurityUtils.getSesionUser();
+					oBook.setBookUser(oCurrentUser);
+					
+					
+					oBookRep.save(oBook);
+					
+					Notification.show("Your restaurant was successfully booked");
+					oCurrentUser.addUser(oBook);
+				}
+				catch(Exception ex) {}
+			
+			}
 			
 		});
 	}

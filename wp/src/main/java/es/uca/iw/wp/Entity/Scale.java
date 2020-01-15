@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -23,6 +24,9 @@ public class Scale {
 	@CreationTimestamp
 	//@Temporal(TemporalType.TIMESTAMP)
 	private Date _dTimeNow;
+	
+	@ManyToOne
+	private Trip _oTrip;
 	
 
 	public Scale() {}
