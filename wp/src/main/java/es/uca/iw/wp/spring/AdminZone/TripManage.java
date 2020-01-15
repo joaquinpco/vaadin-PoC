@@ -13,8 +13,6 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.treegrid.TreeGrid;
-
 import es.uca.iw.wp.Entity.Trip;
 import es.uca.iw.wp.Repository.TripRepository;
 
@@ -27,8 +25,6 @@ public class TripManage extends VerticalLayout{
 	
 	private FormLayout _oColumnLayout;
 	private TextField _txtName;
-	private PasswordField _oPwdPassword;
-	private Select<String> _oSlctValueSelect;
 	private Button _oBtnNewTrip, _oBtnShowTrips;
 	private Grid<Trip> oGrid;
 	
