@@ -68,6 +68,7 @@ public class User implements UserDetails
 	public String getPassword() { return _sPassword; }
 	public int getAccessCode() { return _iAccessCode; }
 	public String getRole() { return _sRole; }
+	public Long getId() { return id; }
 	
 	public void setName(String sNombre) { _sName = sNombre; }
 	public void setLastName(String sLastName) { _sLastName = sLastName; }

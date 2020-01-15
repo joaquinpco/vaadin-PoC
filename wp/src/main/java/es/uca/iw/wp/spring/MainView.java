@@ -135,7 +135,7 @@ public class MainView extends AppLayout {
             		setContent(new ScaleView(_oScaleService));
             		break;
             	case "Profile":
-            		setContent(new UserView());
+            		setContent(new UserView(_oBookRepository));
             		break;
             	case "User Manage":
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
