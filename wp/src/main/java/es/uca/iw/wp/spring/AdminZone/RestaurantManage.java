@@ -64,8 +64,8 @@ public class RestaurantManage extends VerticalLayout{
 	    _txtTable.setRequired(true);
 	    
 	    
-	    _oColumnLayout.addFormItem(_dtTimeOpen, "HH:MM");
-	    _oColumnLayout.addFormItem(_dtTimeClose, "HH:MM");
+	    _oColumnLayout.addFormItem(_dtTimeOpen, "Opening time (HH:MM)");
+	    _oColumnLayout.addFormItem(_dtTimeClose, "Closing time (HH:MM)");
 	 
 	    _oBtnNewRestaurant = new Button("Register");
 	    _oBtnShowRestaurants = new Button("Show Restaurants");
