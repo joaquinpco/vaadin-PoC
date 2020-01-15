@@ -20,11 +20,13 @@ import es.uca.iw.wp.Repository.RestaurantRepository;
 import es.uca.iw.wp.Repository.ShipRepository;
 import es.uca.iw.wp.Repository.TripRepository;
 import es.uca.iw.wp.Repository.BookRepository;
+import es.uca.iw.wp.Repository.ExcursionRepository;
 import es.uca.iw.wp.Repository.UserRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
 import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
+import es.uca.iw.wp.spring.AdminZone.ExcursionManage;
 import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
 import es.uca.iw.wp.spring.AdminZone.ShipManagement;
 import es.uca.iw.wp.spring.AdminZone.TripManage;
@@ -51,6 +53,9 @@ public class MainView extends AppLayout {
 	
 	@Autowired
 	private RestaurantRepository _oRestaurantRepository;
+	
+	@Autowired
+	private ExcursionRepository _oExcursionRepository;
 	
 	@Autowired
 	private TripRepository _oTripRepository;
@@ -95,7 +100,7 @@ public class MainView extends AppLayout {
         
         //En caso del administrador añadimos los menús
         if(oUser.getRole().equals("admin"))
-        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"), new Tab("Trip Manage"));
+        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"), new Tab("Trip Manage"), new Tab("Excursion Manage"));
     
 	}
 		
@@ -143,6 +148,9 @@ public class MainView extends AppLayout {
             		break;
             	case "Trip Manage":
             		setContent(new TripManage(_oTripRepository));
+            		break;	
+            	case "Excursion Manage":
+            		setContent(new ExcursionManage(_oExcursionRepository));
             		break;
             }
         });
