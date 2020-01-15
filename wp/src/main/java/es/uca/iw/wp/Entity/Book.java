@@ -70,7 +70,7 @@ public class Book {
 	//1 Restaurants 2 Excursions
 	public void setIdTabla(int iIdTabla) { _iIdTabla = iIdTabla; }
 	
-	public void setUser(User oUser) { _oUser = oUser; }
+	public void setBookUser(User oUser) { _oUser = oUser; }
 	
 	
 	
