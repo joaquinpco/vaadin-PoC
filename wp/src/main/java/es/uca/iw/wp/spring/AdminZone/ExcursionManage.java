@@ -82,6 +82,8 @@ public class ExcursionManage extends VerticalLayout{
 		_oBtnShowExcursions.addClickListener(e->{
 			List<Excursion> oLstExcursion = _oExcursionRepository.findAll();
 			
+			oGrid.removeAllColumns();
+			
 			oGrid.setItems(oLstExcursion);
 			oGrid.addColumn(Excursion::getExcursionName).setHeader("Name");
 			oGrid.addColumn(Excursion::getDescription).setHeader("Description");
