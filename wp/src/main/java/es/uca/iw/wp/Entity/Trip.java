@@ -1,8 +1,12 @@
 package es.uca.iw.wp.Entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Trip {
@@ -13,7 +17,10 @@ public class Trip {
 	
 	private String _sName;
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "_oTrip")
+	private List<Scale> oLstScale;
 	
+	public Trip(){}
 	
 	/**
 	 * 
