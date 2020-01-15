@@ -1,9 +1,12 @@
 package es.uca.iw.wp.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.uca.iw.wp.Entity.Excursion;
+import es.uca.iw.wp.Entity.Restaurant;
 import es.uca.iw.wp.Repository.ExcursionRepository;
 @Service
 public class ExcursionService {
@@ -18,4 +21,6 @@ public class ExcursionService {
 	public Excursion findByIds(int id) {return _oExcRepo.findByIds(id);}
 	
 	public Long count() { return _oExcRepo.count(); }
+	
+	public List<Excursion> listExcursion(){ return _oExcRepo.findAll(); }
 }

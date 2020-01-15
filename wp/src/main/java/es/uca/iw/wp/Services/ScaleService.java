@@ -21,7 +21,7 @@ public class ScaleService{
 		 * @param entry
 		 * @return
 		 */
-		public Scale findById(int id) { return _oScRepository.findByIds(id); }
+		public Scale findById(long id) { return _oScRepository.findByID(id); }
 		
 		public long numberOfScales() { return _oScRepository.count(); }
 		

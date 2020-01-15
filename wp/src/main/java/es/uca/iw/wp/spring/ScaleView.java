@@ -62,7 +62,7 @@ public class ScaleView extends VerticalLayout {
 		}
 		else
 		{
-			_oTxtInfo = new H1("No hay información sobre escalas actualmente");
+			_oTxtInfo = new H1("No hay datos de escalas actualmente");
 			add(_oTxtInfo);
 		}
 		//_btnCheck.addClickListener(e->obtainTable(_dBegin.getValue(), _dEnd.getValue())); //Acceso a la base de datos para pillar las escalas entre f1 y f2

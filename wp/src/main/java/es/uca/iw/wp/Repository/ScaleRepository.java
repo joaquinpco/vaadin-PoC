@@ -11,7 +11,7 @@ import es.uca.iw.wp.Entity.Scale;
 public interface ScaleRepository extends JpaRepository<Scale, Integer>{
 	
 	@Query("select u from Scale u where u.id = :id")
-	Scale findByIds(@Param("id") Integer id);
+	Scale findByID(@Param("id") Long id);
 	
 	/*@Query("select u from Scale u where u._dTimeNow is between u._dArrive= :dArrive and u._dDeparture= :dDeparture")
 	List<Scale> findAllBy_dTimeNow(@Param("dArrive, dDeparture") LocalDate dArrive, LocalDate dDeparture);

@@ -51,14 +51,13 @@ public class MainView extends AppLayout {
 	private RestaurantRepository _oRestaurantRepository;
 	
 	@Autowired
-	private ShipRepository _oShipRepository;
-	
-	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
 	
 	@Autowired
 	private BookRepository _oBookRepository;
-
+	
+	@Autowired
+	private ShipRepository _oShipRepository;
 	
 	public void initializeView(User oUser)
 	{	
@@ -150,7 +149,7 @@ public class MainView extends AppLayout {
 		        break;
 		        
 	        	case "Excursions":
-	        		setContent(new ExcursionView(_oExcursionService));
+	        		setContent(new ExcursionView(_oExcursionService, _oBookRepository));
 	        	break;
         	}
         });

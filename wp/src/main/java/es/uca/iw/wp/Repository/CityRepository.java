@@ -7,7 +7,8 @@ import org.springframework.data.repository.query.Param;
 import es.uca.iw.wp.Entity.City;
 
 public interface CityRepository extends JpaRepository<City, Integer>{
-	@Query("select u from City u where u._iId =:id")
+	@Query("select u from City u where u.id =:id")
 	City findByIds(@Param("id") Integer id);
+	
 
 }

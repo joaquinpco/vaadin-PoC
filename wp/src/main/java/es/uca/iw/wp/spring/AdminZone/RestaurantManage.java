@@ -53,8 +53,10 @@ public class RestaurantManage extends VerticalLayout{
 		_txtName.setRequired(true);
 		_dtTimeClose = new TimePicker();
 		_dtTimeClose.setRequired(true);
+		_dtTimeClose.setPlaceholder("HH:MM");
 		_dtTimeOpen = new TimePicker();
 		_dtTimeOpen.setRequired(true);
+		_dtTimeOpen.setPlaceholder("HH:MM");
 		
 		
 	    _txtName.setPlaceholder("Name");
@@ -64,8 +66,8 @@ public class RestaurantManage extends VerticalLayout{
 	    _txtTable.setRequired(true);
 	    
 	    
-	    _oColumnLayout.addFormItem(_dtTimeOpen, "Opening time (HH:MM)");
-	    _oColumnLayout.addFormItem(_dtTimeClose, "Closing time (HH:MM)");
+	    _oColumnLayout.addFormItem(_dtTimeOpen, "Opening time");
+	    _oColumnLayout.addFormItem(_dtTimeClose, "Closing time");
 	 
 	    _oBtnNewRestaurant = new Button("Register");
 	    _oBtnShowRestaurants = new Button("Show Restaurants");
