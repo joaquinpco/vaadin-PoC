@@ -77,20 +77,31 @@ public class UserManage extends VerticalLayout{
 		_oPasswordEncoder = oPasswordEncoder;
 		
 		_oBtnNewUser.addClickListener(e->{
-			User oUser = new User();
-			oUser.setName(_txtFirstName.getValue());
-			oUser.setLastName(_txtLastName.getValue());
-			oUser.setPassword(_oPasswordEncoder.encode(_oPwdPassword.getValue()));
-			oUser.setRole(_oSlctValueSelect.getValue());
 			
-			_oUsrRepository.save(oUser);
-			Notification.show("User added to our System.");
+			if(_txtFirstName.getValue().equals("") || 
+					_txtLastName.getValue().equals("") || 
+					_oPwdPassword.getValue().equals(""))
+			{
+				Notification.show("Fields are required");
+			}
+			else
+			{
+				User oUser = new User();
+				oUser.setName(_txtFirstName.getValue());
+				oUser.setLastName(_txtLastName.getValue());
+				oUser.setPassword(_oPasswordEncoder.encode(_oPwdPassword.getValue()));
+				oUser.setRole(_oSlctValueSelect.getValue());
+				
+				_oUsrRepository.save(oUser);
+				Notification.show("User added to our System.");
+			}
 		});
 		
 		_oBtnShowUsers.addClickListener(e->{
 			List<User> oLstUser = _oUsrRepository.findAll();
 			
-
+			oGrid.removeAllColumns();
+			
 			oGrid.setItems(oLstUser);
 			oGrid.addColumn(User::getName).setHeader("Name");
 			oGrid.addColumn(User::getLastName).setHeader("Last Name");

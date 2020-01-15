@@ -50,19 +50,32 @@ public class RestaurantManage extends VerticalLayout{
 		           new ResponsiveStep("40em", 3));
 		
 		_txtName = new TextField();
+		_txtName.setRequired(true);
+		_dtTimeClose = new TimePicker();
+		_dtTimeClose.setRequired(true);
+		_dtTimeOpen = new TimePicker();
+		_dtTimeOpen.setRequired(true);
+		
+		
 	    _txtName.setPlaceholder("Name");
+	    
 	    TextField _txtTable = new TextField();
 	    _txtTable.setPlaceholder("Number of tables"); 
-	    _oColumnLayout.addFormItem(_dtTimeOpen, "HH:MM");
-	    _oColumnLayout.addFormItem(_dtTimeClose, "HH:MM");
+	    _txtTable.setRequired(true);
+	    
+	    
+	    _oColumnLayout.addFormItem(_dtTimeOpen, "Opening time (HH:MM)");
+	    _oColumnLayout.addFormItem(_dtTimeClose, "Closing time (HH:MM)");
 	 
 	    _oBtnNewRestaurant = new Button("Register");
 	    _oBtnShowRestaurants = new Button("Show Restaurants");
+	    _oColumnLayout.add(_txtName,_txtTable);
 	    add(_oColumnLayout, _oBtnNewRestaurant);
 	    
 	    oGrid = new Grid<>();
 	    
-	    _oColumnLayout.add(_txtName,_txtTable);
+	    add(oGrid, _oBtnShowRestaurants);
+	    
 	}
 	    
 	    
@@ -71,45 +84,56 @@ public class RestaurantManage extends VerticalLayout{
 		 
 	
 	public RestaurantManage(RestaurantRepository oRestaurantRepository) 
-	{
+	{	
+		_oRestaurantRepository = oRestaurantRepository;
 		initializeView();
 		
-		_oRestaurantRepository = oRestaurantRepository;
 		_oBtnNewRestaurant.addClickListener(e->{
-			Restaurant oRestaurant = new Restaurant();
-			oRestaurant.setName(_txtName.getValue());
 			
 			
-			String sDate = _dtTimeOpen.getValue().getHour() + ":00:00";
-			smpDateFormatCheck = null;
-			Date _dtOpen = null;
-			try {
-				_dtOpen = smpDateFormatCheck.parse(sDate);
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if(_txtName.getValue().equals("") || _txtTable.equals("") 
+					|| _dtTimeClose.getValue() != null || _dtTimeOpen.getValue() != null)
+			{
+				Notification.show("Fields are required");
 			}
-			oRestaurant.setOpen(_dtOpen);
+			else
+			{
+				Restaurant oRestaurant = new Restaurant();
+				oRestaurant.setName(_txtName.getValue());
+				
+				
+				String sDate = _dtTimeOpen.getValue().getHour() + ":00:00";
+				smpDateFormatCheck = null;
+				Date _dtOpen = null;
+				try {
+					_dtOpen = smpDateFormatCheck.parse(sDate);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				oRestaurant.setOpen(_dtOpen);
+				
+				
+				sDate = _dtTimeClose.getValue().getHour() + ":00:00";
+				Date _dtClose = null;
+				try {
+					_dtClose = smpDateFormatCheck.parse(sDate);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				oRestaurant.setClose(_dtClose);
 			
-			
-			sDate = _dtTimeClose.getValue().getHour() + ":00:00";
-			Date _dtClose = null;
-			try {
-				_dtClose = smpDateFormatCheck.parse(sDate);
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				oRestaurant.setTable(Integer.valueOf(_txtTable.getValue()));
+				_oRestaurantRepository.save(oRestaurant);
+				Notification.show("Restaurant added to our System.");
 			}
-			oRestaurant.setClose(_dtClose);
-		
-			oRestaurant.setTable(Integer.valueOf(_txtTable.getValue()));
-			_oRestaurantRepository.save(oRestaurant);
-			Notification.show("Restaurant added to our System.");
 		});
 		
 		_oBtnShowRestaurants.addClickListener(e->{
 			List<Restaurant> oLstRestaurant = _oRestaurantRepository.listRestaurant();
 			
+			oGrid.removeAllColumns();
 			oGrid.setItems(oLstRestaurant);
 			oGrid.addColumn(Restaurant::getName).setHeader("Name");
 		});
