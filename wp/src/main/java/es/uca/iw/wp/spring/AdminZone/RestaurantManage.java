@@ -3,15 +3,9 @@ package es.uca.iw.wp.spring.AdminZone;
 import java.util.List;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
@@ -34,7 +28,6 @@ public class RestaurantManage extends VerticalLayout{
 	private FormLayout _oColumnLayout;
 	private TextField _txtName, _txtTable;
 	private TimePicker _dtTimeClose, _dtTimeOpen;
-	private Date _dtOpen, _dtClose;
 	private Button _oBtnNewRestaurant, _oBtnShowRestaurants;
 	private Grid<Restaurant> oGrid;
 	

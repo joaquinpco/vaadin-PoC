@@ -123,7 +123,7 @@ public class MainView extends AppLayout {
         //Check if admin Logged
         
         initializeView(oUser);
-        
+        setContent(new HomeView());
         
         
         _btnLogOut.addClickListener(e->{
