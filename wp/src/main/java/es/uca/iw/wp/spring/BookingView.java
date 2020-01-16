@@ -19,10 +19,12 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
 
 import es.uca.iw.wp.Entity.Book;
+import es.uca.iw.wp.Entity.Excursion;
 import es.uca.iw.wp.Entity.Restaurant;
 import es.uca.iw.wp.Entity.User;
 import es.uca.iw.wp.Repository.BookRepository;
 import es.uca.iw.wp.Security.SecurityUtils;
+import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 
 @Secured({"admin", "user"})
@@ -46,6 +48,7 @@ public class BookingView extends VerticalLayout{
 	
 	
 	private Restaurant _oCurrentRestaurant;
+	private Excursion _oCurrentExcursion;
 	
 	
 	private BookRepository _oBookRep;
@@ -83,15 +86,50 @@ public class BookingView extends VerticalLayout{
 				
 				_oDatePicker.setValue(LocalDate.now());
 				
-				_oLytWithFormItems.addFormItem(_oTxtNClient, "Nº Clients");
-				_oLytWithFormItems.addFormItem(_oDatePicker, "DD/MM/YYYY");
-				_oLytWithFormItems.addFormItem(_oTimePicker, "HH:MM");
+				_oLytWithFormItems.addFormItem(_oTxtNClient, "Nº Clients:");
+				_oLytWithFormItems.addFormItem(_oDatePicker, "Day:");
+				_oLytWithFormItems.addFormItem(_oTimePicker, "Hours:");
 			
 				add(_oLytWithFormItems, _oBtnBook);
 		}
 		else
 		{
 			//Booking Excursions
+			//Booking Restaurants
+			ExcursionService oExcursionService = (ExcursionService) oServicio;
+			
+			if(oExcursionService.count() > 0)
+			{
+				_oCurrentExcursion = oExcursionService.findByIds(_lServiceId);
+				
+				_oLblBookingName.setItems(_oCurrentExcursion.getExcursionName());
+				
+				_oLblBookingName.setValue(_oCurrentExcursion.getExcursionName());
+				
+				//_oLblBookingName.setValue(_oCurrentRestaurant.getName());
+			}
+			else
+			{
+				_oLblBookingName.setEnabled(false);
+				_oBtnBook.setEnabled(false);
+				_oTxtNClient.setEnabled(false);
+				_oDatePicker.setEnabled(false);
+				_oTimePicker.setEnabled(false);
+				
+			}
+			
+			_oLblBookingName.setLabel("Booking " + sBookType);
+			
+			_oLytWithFormItems.add(_oLblBookingName);
+			
+			_oDatePicker.setValue(LocalDate.now());
+			
+			_oLytWithFormItems.addFormItem(_oTxtNClient, "Nº Clients:");
+			_oLytWithFormItems.addFormItem(_oDatePicker, "Day:");
+			_oLytWithFormItems.addFormItem(_oTimePicker, "Hours:");
+		
+			add(_oLytWithFormItems, _oBtnBook);
+			
 		}
 		
 	}
@@ -139,7 +177,7 @@ public class BookingView extends VerticalLayout{
 					int iMesas = new Random().nextInt(_oCurrentRestaurant.getTable());
 					Book oBook = new Book();
 					//Type Restaurant
-					oBook.setTipo(1);
+					oBook.setTipo(_sBookType.equals("Restaurants") ? 1 : 0);
 					oBook.setFechaReserva(dReserva);
 					oBook.setAforoPosicionUser(iMesas);
 					

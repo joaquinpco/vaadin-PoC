@@ -18,7 +18,7 @@ public class ExcursionService {
 		
 	}
 	
-	public Excursion findByIds(int id) {return _oExcRepo.findByIds(id);}
+	public Excursion findByIds(Long _lServiceId) {return _oExcRepo.findByIds(_lServiceId);}
 	
 	public Long count() { return _oExcRepo.count(); }
 	
