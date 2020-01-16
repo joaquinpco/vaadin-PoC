@@ -51,7 +51,7 @@ public class ExcursionManage extends VerticalLayout{
 	    _txtCancelationPay = new TextField();
 	    _txtCancelationPay.setPlaceholder("Cancelation Pay");
 	    
-	    _oBtnNewExcursion = new Button("Register");
+	    _oBtnNewExcursion = new Button("New Excursion");
 	    _oBtnShowExcursions = new Button("Show Excursions");
 	    
 	    oGrid = new Grid<>();

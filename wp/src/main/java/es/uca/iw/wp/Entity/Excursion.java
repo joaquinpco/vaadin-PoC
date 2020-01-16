@@ -39,7 +39,7 @@ public class Excursion {
 	public double getPrice() {return _dPrice;}
 	public int getDuration() {return _iDuration;}
 	public double getCancelationPay() { return _dCancelationPay; }
-	public long getId() {return id;}
+	public Long getId() {return id;}
 	
 	public void setExcursionName(String excName) {_strExcursionName = excName;}
 	public void setDescription(String desc) {_strDescription = desc;}
