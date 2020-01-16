@@ -83,9 +83,9 @@ public class BookingView extends VerticalLayout{
 				
 				_oDatePicker.setValue(LocalDate.now());
 				
-				_oLytWithFormItems.addFormItem(_oTxtNClient, "Nº Clients");
-				_oLytWithFormItems.addFormItem(_oDatePicker, "DD/MM/YYYY");
-				_oLytWithFormItems.addFormItem(_oTimePicker, "HH:MM");
+				_oLytWithFormItems.addFormItem(_oTxtNClient, "Nº Clients:");
+				_oLytWithFormItems.addFormItem(_oDatePicker, "Day:");
+				_oLytWithFormItems.addFormItem(_oTimePicker, "Hour:");
 			
 				add(_oLytWithFormItems, _oBtnBook);
 		}
