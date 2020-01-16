@@ -41,7 +41,7 @@ public class ShipManage extends VerticalLayout{
 		_oShipLayout.setResponsiveSteps(
 		           new ResponsiveStep("25em", 1),
 		           new ResponsiveStep("32em", 2),
-		           new ResponsiveStep("40em", 3));
+		           new ResponsiveStep("45em", 3));
 		
 		_txtName = new TextField();
 		_txtName.setLabel("Name of the ship");
