@@ -113,7 +113,6 @@ public class User implements UserDetails
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
-		
 	}
 
 	@Override
