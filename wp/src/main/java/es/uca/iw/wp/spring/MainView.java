@@ -17,6 +17,7 @@ import com.vaadin.flow.router.Route;
 import es.uca.iw.wp.Entity.User;
 
 import es.uca.iw.wp.Repository.RestaurantRepository;
+import es.uca.iw.wp.Repository.ScaleRepository;
 import es.uca.iw.wp.Repository.ShipRepository;
 import es.uca.iw.wp.Repository.TripRepository;
 import es.uca.iw.wp.Repository.BookRepository;
@@ -29,6 +30,7 @@ import es.uca.iw.wp.Services.ScaleService;
 import es.uca.iw.wp.spring.AdminZone.BookPriceManage;
 import es.uca.iw.wp.spring.AdminZone.ExcursionManage;
 import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
+import es.uca.iw.wp.spring.AdminZone.ScaleManagement;
 import es.uca.iw.wp.spring.AdminZone.ShipManage;
 import es.uca.iw.wp.spring.AdminZone.TripManage;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
@@ -71,6 +73,9 @@ public class MainView extends AppLayout {
 	@Autowired
 	private ShipRepository _oShipRepository;
 	
+	@Autowired
+	private ScaleRepository _oScaleRepo;
+	
 	public void initializeView(User oUser)
 	{	
 		Image img = new Image("frontend/img/WPlogo.png", "WPlogo");
@@ -102,7 +107,7 @@ public class MainView extends AppLayout {
         //En caso del administrador añadimos los menús
         if(oUser.getRole().equals("admin"))
         	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"), 
-        			new Tab("Trip Manage"), new Tab("Excursion Manage"));
+        			new Tab("Trip Manage"), new Tab("Excursion Manage"), new Tab("Scale Manage"));
         else if(oUser.getRole().equals("manager"))
         	_tabs.add(new Tab("Book Price Manage"));
 	}
@@ -154,6 +159,9 @@ public class MainView extends AppLayout {
             		break;	
             	case "Excursion Manage":
             		setContent(new ExcursionManage(_oExcursionRepository));
+            		break;
+            	case "Scale Manage":
+            		setContent(new ScaleManagement(_oScaleRepo));
             		break;
             	case "Book Price Manage":
             		setContent(new BookPriceManage(_oBookRepository));

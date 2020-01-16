@@ -90,9 +90,9 @@ public class ExcursionManage extends VerticalLayout{
 			oGrid.setItems(oLstExcursion);
 			oGrid.addColumn(Excursion::getExcursionName).setHeader("Name");
 			oGrid.addColumn(Excursion::getDescription).setHeader("Description");
-			oGrid.addColumn(Excursion::getDescription).setHeader("Price");
-			oGrid.addColumn(Excursion::getDescription).setHeader("Duration");
-			oGrid.addColumn(Excursion::getDescription).setHeader("Cancelation Pay");
+			oGrid.addColumn(Excursion::getPrice).setHeader("Price");
+			oGrid.addColumn(Excursion::getDuration).setHeader("Duration(min)");
+			oGrid.addColumn(Excursion::getCancelationPay).setHeader("Cancelation Pay");
 			//oGrid.getTreeData().addItems(oLstExcursion.get(0), oLstExcursion);
 		});
 	}
