@@ -62,7 +62,6 @@ public class MainView extends AppLayout {
 	@Autowired
 	private TripRepository _oTripRepository;
 	
-	
 	@Autowired
 	private PasswordEncoder _oPasswordEncoder;
 	

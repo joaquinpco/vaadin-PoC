@@ -6,6 +6,7 @@ import org.springframework.security.access.annotation.Secured;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -36,6 +37,11 @@ public class ShipManage extends VerticalLayout{
 	
 	public void initView() {
 		_oShipLayout = new FormLayout();
+		
+		_oShipLayout.setResponsiveSteps(
+		           new ResponsiveStep("25em", 1),
+		           new ResponsiveStep("32em", 2),
+		           new ResponsiveStep("40em", 3));
 		
 		_txtName = new TextField();
 		_txtName.setLabel("Name of the ship");
