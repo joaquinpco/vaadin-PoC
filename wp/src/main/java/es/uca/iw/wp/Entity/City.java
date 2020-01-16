@@ -11,9 +11,9 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class City {
-	@GeneratedValue
 	@Id
-	private int _iId;
+	@GeneratedValue
+	private Long id;
 	
 	private String _sName;
 	private String _sDescrip;
@@ -42,7 +42,6 @@ public class City {
 	public String getUrlVideo() {return _sUrlVideo;}
 	public List<Excursion> getExcursions(){return _lstExcursion;}
 	
-	public void setCityId(int id) {_iId = id;}
 	public void setName(String name) {
 		_sName = name;
 	}

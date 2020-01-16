@@ -2,8 +2,11 @@ package es.uca.iw.wp.spring.AdminZone;
 
 import java.util.List;
 
+import org.springframework.security.access.annotation.Secured;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
+import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -12,7 +15,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import es.uca.iw.wp.Entity.Ship;
 import es.uca.iw.wp.Repository.ShipRepository;
 
-public class ShipManagement extends VerticalLayout{
+@Secured("admin")
+public class ShipManage extends VerticalLayout{
 	
 	/**
 	 * 
@@ -33,6 +37,11 @@ public class ShipManagement extends VerticalLayout{
 	
 	public void initView() {
 		_oShipLayout = new FormLayout();
+		
+		_oShipLayout.setResponsiveSteps(
+		           new ResponsiveStep("25em", 1),
+		           new ResponsiveStep("32em", 2),
+		           new ResponsiveStep("40em", 3));
 		
 		_txtName = new TextField();
 		_txtName.setLabel("Name of the ship");
@@ -60,7 +69,7 @@ public class ShipManagement extends VerticalLayout{
 		add(_oShipLayout, _btnSaveShip, _btnShowShips, _oGridShips);
 	}
 	
-	public ShipManagement(ShipRepository oShipRepo) {
+	public ShipManage(ShipRepository oShipRepo) {
 		initView();
 		
 		_oShipRepo = oShipRepo;

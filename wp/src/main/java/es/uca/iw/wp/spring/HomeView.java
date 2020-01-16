@@ -14,5 +14,6 @@ public HomeView()
 	 this.setSizeFull();
 	 this.addClassName("homeScreen");
 	 this.getStyle().set("background", "url(frontend/img/Fondo.png) no-repeat center center fixed");
+	 
  }
 }

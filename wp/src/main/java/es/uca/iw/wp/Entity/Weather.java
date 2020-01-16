@@ -11,6 +11,7 @@ import java.net.URL;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,8 +25,17 @@ public class Weather
 	private double _dTemperature, _dPressure;
 	private String _sDescription;
 	
+	@OneToOne
+	private City _oCity;
+	
 	public Weather() {}
 	
+	/**
+	 * 
+	 * @param dTemperature
+	 * @param dPressure
+	 * @param sDescription
+	 */
 	public Weather(double dTemperature, double dPressure, String sDescription)
 	{
 		_dTemperature = dTemperature;
@@ -96,7 +106,6 @@ public class Weather
                     //Obtenemos los dos campos.
                     int iId_provincia = oObjetoActual.getInt("id");
                     String sName = oObjetoActual.getString("name");
-                    
 
                 }
             }

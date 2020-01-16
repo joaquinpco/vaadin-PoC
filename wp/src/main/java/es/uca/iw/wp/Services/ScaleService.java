@@ -1,6 +1,7 @@
 package es.uca.iw.wp.Services;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,14 @@ public class ScaleService{
 		 * @param entry
 		 * @return
 		 */
-		public Scale findById(int id) { return _oScRepository.findByIds(id); }
+		public Scale findById(long id) { return _oScRepository.findByID(id); }
 		
 		public long numberOfScales() { return _oScRepository.count(); }
 		
 		public Scale findBy_dTimeNow(LocalDate now) {
 			return _oScRepository.findBy_dTimeNow(now);
 		}
+		
+		public List<Scale> escalas(){return _oScRepository.findAll();}
 	
 }

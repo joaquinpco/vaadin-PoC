@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -31,7 +32,9 @@ public class User implements UserDetails
 	private Long id;
 	
 	private String _sName, _sLastName, _sPassword;
+	
 	private int _iAccessCode;
+	
 	private String _sRole;
 	
 	@ManyToMany(mappedBy="_lstUser")
@@ -68,6 +71,7 @@ public class User implements UserDetails
 	public String getPassword() { return _sPassword; }
 	public int getAccessCode() { return _iAccessCode; }
 	public String getRole() { return _sRole; }
+	public Long getId() { return id; }
 	
 	public void setName(String sNombre) { _sName = sNombre; }
 	public void setLastName(String sLastName) { _sLastName = sLastName; }

@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 public class Excursion {
 	@Id
 	@GeneratedValue
-	private int _iId;
+	private Long id;
 	
 	private String _strExcursionName;
 	private String _strDescription;
@@ -39,7 +39,7 @@ public class Excursion {
 	public double getPrice() {return _dPrice;}
 	public int getDuration() {return _iDuration;}
 	public double getCancelationPay() { return _dCancelationPay; }
-
+	public Long getId() {return id;}
 	
 	public void setExcursionName(String excName) {_strExcursionName = excName;}
 	public void setDescription(String desc) {_strDescription = desc;}

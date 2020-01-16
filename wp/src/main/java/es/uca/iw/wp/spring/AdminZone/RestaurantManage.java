@@ -3,14 +3,9 @@ package es.uca.iw.wp.spring.AdminZone;
 import java.util.List;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.springframework.security.access.annotation.Secured;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
@@ -22,6 +17,7 @@ import com.vaadin.flow.component.timepicker.TimePicker;
 import es.uca.iw.wp.Entity.Restaurant;
 import es.uca.iw.wp.Repository.RestaurantRepository;
 
+@Secured("admin")
 public class RestaurantManage extends VerticalLayout{
 	
 	/**
@@ -32,7 +28,6 @@ public class RestaurantManage extends VerticalLayout{
 	private FormLayout _oColumnLayout;
 	private TextField _txtName, _txtTable;
 	private TimePicker _dtTimeClose, _dtTimeOpen;
-	private Date _dtOpen, _dtClose;
 	private Button _oBtnNewRestaurant, _oBtnShowRestaurants;
 	private Grid<Restaurant> oGrid;
 	
@@ -53,8 +48,10 @@ public class RestaurantManage extends VerticalLayout{
 		_txtName.setRequired(true);
 		_dtTimeClose = new TimePicker();
 		_dtTimeClose.setRequired(true);
+		_dtTimeClose.setPlaceholder("HH:MM");
 		_dtTimeOpen = new TimePicker();
 		_dtTimeOpen.setRequired(true);
+		_dtTimeOpen.setPlaceholder("HH:MM");
 		
 		
 	    _txtName.setPlaceholder("Name");
@@ -64,8 +61,8 @@ public class RestaurantManage extends VerticalLayout{
 	    _txtTable.setRequired(true);
 	    
 	    
-	    _oColumnLayout.addFormItem(_dtTimeOpen, "HH:MM");
-	    _oColumnLayout.addFormItem(_dtTimeClose, "HH:MM");
+	    _oColumnLayout.addFormItem(_dtTimeOpen, "Opening time");
+	    _oColumnLayout.addFormItem(_dtTimeClose, "Closing time");
 	 
 	    _oBtnNewRestaurant = new Button("Register");
 	    _oBtnShowRestaurants = new Button("Show Restaurants");

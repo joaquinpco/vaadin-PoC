@@ -9,7 +9,7 @@ import es.uca.iw.wp.Entity.Food;
 import es.uca.iw.wp.Repository.FoodRepository;
 @Service
 public class FoodService{
-		private static FoodRepository _oScRepository;
+		private FoodRepository _oScRepository;
 		
 		@Autowired
 		private FoodService(FoodRepository oScRepository) {

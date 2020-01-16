@@ -12,7 +12,6 @@ import com.vaadin.flow.router.Route;
 import es.uca.iw.wp.Entity.City;
 import es.uca.iw.wp.Entity.Excursion;
 import es.uca.iw.wp.Services.CityService;
-
 @Route("showCity")
 public class CityView extends VerticalLayout{
 	
@@ -26,7 +25,7 @@ public class CityView extends VerticalLayout{
 	private H2 _hContenido;
 	private VerticalLayout CityMenu = new VerticalLayout();
 	
-	public CityView(CityService oCs) {
+	public CityView(CityService oCs, String nomCiudad) {
 		_oCs = oCs;
 		
 		if(_oCs.count() > 0)
@@ -51,5 +50,6 @@ public class CityView extends VerticalLayout{
 			_hCabecera = new H1("No hay ciudades disponibles en el sistema");
 			add(_hCabecera);
 		}
+		
 	}
 }
