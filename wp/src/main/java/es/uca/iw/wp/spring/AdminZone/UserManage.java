@@ -3,6 +3,7 @@ package es.uca.iw.wp.spring.AdminZone;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.vaadin.flow.component.button.Button;
@@ -19,6 +20,7 @@ import com.vaadin.flow.component.treegrid.TreeGrid;
 import es.uca.iw.wp.Entity.User;
 import es.uca.iw.wp.Repository.UserRepository;
 
+@Secured("admin")
 public class UserManage extends VerticalLayout{
 	
 	/**

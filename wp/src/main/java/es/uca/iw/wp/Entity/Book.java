@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -54,6 +55,7 @@ public class Book {
 		_iIdTabla = iIdTabla;
 	}
 	
+	public int getId() { return id; }
 	public int getTipo(){ return _iTipo; }
 	public Date getFechaReserva(){ return _dFechaReserva; }
 	public double getGasto() { return _dGasto; }
@@ -63,6 +65,8 @@ public class Book {
 	public void setTipo(int iTipo) { _iTipo = iTipo; }
 	public void setFechaReserva(Date dFechaReserva){ _dFechaReserva = dFechaReserva; }
 	public void setGasto(double dGasto){ _dGasto= dGasto; }
+	
+	public String getBookUserName() { return _oUser.getName() + " " + _oUser.getLastName();}
 	
 	//Book user table  
 	public void setAforoPosicionUser(int iAforoPosicionUsr) { _iAforoPosicionUsr = iAforoPosicionUsr; }

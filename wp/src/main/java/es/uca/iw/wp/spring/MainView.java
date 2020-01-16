@@ -26,9 +26,10 @@ import es.uca.iw.wp.Security.SecurityUtils;
 import es.uca.iw.wp.Services.ExcursionService;
 import es.uca.iw.wp.Services.RestaurantService;
 import es.uca.iw.wp.Services.ScaleService;
+import es.uca.iw.wp.spring.AdminZone.BookPriceManage;
 import es.uca.iw.wp.spring.AdminZone.ExcursionManage;
 import es.uca.iw.wp.spring.AdminZone.RestaurantManage;
-import es.uca.iw.wp.spring.AdminZone.ShipManagement;
+import es.uca.iw.wp.spring.AdminZone.ShipManage;
 import es.uca.iw.wp.spring.AdminZone.TripManage;
 import es.uca.iw.wp.spring.AdminZone.UserManage;
 
@@ -101,8 +102,10 @@ public class MainView extends AppLayout {
         
         //En caso del administrador añadimos los menús
         if(oUser.getRole().equals("admin"))
-        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"), new Tab("Trip Manage"), new Tab("Excursion Manage"));
-    
+        	_tabs.add(new Tab("User Manage"), new Tab("Ship Manage"), new Tab("Restaurant Manage"), 
+        			new Tab("Trip Manage"), new Tab("Excursion Manage"));
+        else if(oUser.getRole().equals("manager"))
+        	_tabs.add(new Tab("Book Price Manage"));
 	}
 		
 	@Autowired
@@ -142,7 +145,7 @@ public class MainView extends AppLayout {
             		setContent(new UserManage(_oUsrRepository, _oPasswordEncoder));
             		break;
             	case "Ship Manage":
-            		setContent(new ShipManagement(_oShipRepository));
+            		setContent(new ShipManage(_oShipRepository));
             		break;
             	case "Restaurant Manage":
             		setContent(new RestaurantManage(_oRestaurantRepository));
@@ -152,6 +155,9 @@ public class MainView extends AppLayout {
             		break;	
             	case "Excursion Manage":
             		setContent(new ExcursionManage(_oExcursionRepository));
+            		break;
+            	case "Book Price Manage":
+            		setContent(new BookPriceManage(_oBookRepository));
             		break;
             }
         });

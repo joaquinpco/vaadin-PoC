@@ -3,6 +3,7 @@ package es.uca.iw.wp.spring.AdminZone;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
@@ -16,6 +17,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import es.uca.iw.wp.Entity.Trip;
 import es.uca.iw.wp.Repository.TripRepository;
 
+@Secured("admin")
 public class TripManage extends VerticalLayout{
 	
 	/**

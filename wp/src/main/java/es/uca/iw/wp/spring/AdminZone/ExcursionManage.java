@@ -2,6 +2,8 @@ package es.uca.iw.wp.spring.AdminZone;
 
 import java.util.List;
 
+import org.springframework.security.access.annotation.Secured;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
@@ -13,6 +15,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import es.uca.iw.wp.Entity.Excursion;
 import es.uca.iw.wp.Repository.ExcursionRepository;
 
+@Secured("admin")
 public class ExcursionManage extends VerticalLayout{
 	
 	/**

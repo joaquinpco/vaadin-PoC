@@ -2,6 +2,8 @@ package es.uca.iw.wp.spring.AdminZone;
 
 import java.util.List;
 
+import org.springframework.security.access.annotation.Secured;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.grid.Grid;
@@ -12,6 +14,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import es.uca.iw.wp.Entity.City;
 import es.uca.iw.wp.Repository.CityRepository;
 
+@Secured("admin")
 public class CityManagement extends VerticalLayout{
 	private FormLayout _layout;
 	private TextField _txtNameCity;
