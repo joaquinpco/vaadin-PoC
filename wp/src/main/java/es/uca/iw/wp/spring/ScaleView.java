@@ -19,7 +19,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import es.uca.iw.wp.Entity.Scale;
 import es.uca.iw.wp.Services.ScaleService;
-
+//Prueba
 @Secured({"user","admin"})
 public class ScaleView extends VerticalLayout {
 	
