@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 public interface ExcursionRepository extends JpaRepository<Excursion, Integer>{
 	
 	@Query("select u from Excursion u where u.id = :id")
-	Excursion findByIds(@Param("id") Integer id);
+	Excursion findByIds(@Param("id") long id);
 	
 	@Query("select u from Excursion u")
 	List<Excursion> listExcursion();
